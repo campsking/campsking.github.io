@@ -1,32 +1,43 @@
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x121212);
 
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(35, window.innerWidth / (window.innerHeight * 1), 0.1, 1000);
 camera.position.z = 20;
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight * 0.6); // Cambiar aquí para el alto
+renderer.setSize(window.innerWidth, window.innerHeight * 1); // Cambiar aquí para el alto
 document.body.appendChild(renderer.domElement);
 
 // Manejador de eventos para ajustar el tamaño cuando se cambia el tamaño de la ventana
 window.addEventListener('resize', onWindowResize, false);
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+    camera.aspect = window.innerWidth / (window.innerHeight * 1);
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+    renderer.setSize(window.innerWidth, window.innerHeight * 1);
+    
+    // Renderizar la escena nuevamente
+    render();
 }
 
+// Renderizar la escena
+function render() {
+    // Llamar al método render de Three.js con la escena y la cámara
+    renderer.render(scene, camera);
+}
+
+// Escuchar el evento de redimensionamiento de la ventana y llamar a la función onWindowResize
+window.addEventListener('resize', onWindowResize, false);
+
 // Agregar Luz Ambiental y Direccional
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(0, 1, 1);
 scene.add(directionalLight);
 
-
 // Crear un icosaedro visible y añadirlo a la escena
-const icosahedronGeometry = new THREE.IcosahedronGeometry(10, 0);
+const icosahedronGeometry = new THREE.IcosahedronGeometry(9, 0);
 const icosahedronMaterial = new THREE.MeshBasicMaterial({ color: 0x1f1f1f, wireframe: true });
 const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
 scene.add(icosahedron);
@@ -49,7 +60,7 @@ for (let i = 0; i < positionAttribute.count; i++) {
 
     // Verificar si ya se creó un icosaedro en esta posición
     if (!createdPositions.some(pos => pos.equals(vertex))) {
-        const icosahedronMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        const icosahedronMaterial = new THREE.MeshStandardMaterial({ color: 0x1f1f1f });
         const miniIcosahedron = new THREE.Mesh(miniIcosahedronGeometry, icosahedronMaterial);
 
         // Aplicar una posición inicial desplazada en función del índice
@@ -94,27 +105,80 @@ function onDocumentMouseDown(event) {
     // Cambiar el color del primer objeto intersectado
     if (intersects.length > 0) {
         const object = intersects[0].object;
-        if (!object.userData.clicked) {
-            object.material.color.set(0xFF6600); // Color naranja
-            object.userData.clicked = true;
-        } else {
-            object.material.color.set(0xffffff); // Color original
-            object.userData.clicked = false;
+        if (object.material.color.getHex() === 0xFFFFFF && !object.material.wireframe) {
+            object.material.color.set(0xFF7600); // Cambiar a naranja
+        } else if (object.material.color.getHex() === 0x1f1f1f) {
+            if (!object.userData.clicked) {
+                object.material.color.set(0xFF7600); // Cambiar a blanco
+                object.userData.clicked = true;
+            } else {
+                object.material.color.set(0xFF7600); // Cambiar a naranja oscuro
+                object.userData.clicked = false;
+            }
         }
     }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Función para seleccionar aleatoriamente un mini icosaedro y cambiar su color y tamaño temporalmente
+function highlightRandomMiniIcosahedron() {
+    const availableMiniIcosahedrons = icosahedron.children.filter(miniIcosahedron => {
+        return miniIcosahedron.material.color.getHex() === 0x1f1f1f && !miniIcosahedron.userData.clicked;
+    });
+
+    if (availableMiniIcosahedrons.length === 0) {
+        // Todos los mini icosaedros disponibles ya son naranjas, no hacemos nada
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableMiniIcosahedrons.length);
+    const miniIcosahedron = availableMiniIcosahedrons[randomIndex];
+
+    // Cambiar la representación a alámbrica (wireframe)
+    miniIcosahedron.material.wireframe = true;
+
+    // Cambiar el color a naranja
+    miniIcosahedron.material.color.set(0x6f6f6f);
+    miniIcosahedron.userData.clicked = false;
+
+    // Reducir temporalmente el tamaño del mini icosaedro
+    const originalScale = miniIcosahedron.scale.clone();
+    miniIcosahedron.scale.multiplyScalar(1); // Reducir el tamaño a un 80%
+
+    // Establecer un temporizador para restaurar el color original, el tamaño y la representación después de cierto tiempo (por ejemplo, 2 segundos)
+    setTimeout(() => {
+        miniIcosahedron.material.wireframe = false; // Restaurar la representación original
+        miniIcosahedron.material.color.set(0x1f1f1f); // Color original
+        miniIcosahedron.scale.copy(originalScale); // Restaurar el tamaño original
+        // miniIcosahedron.material.wireframe = false;
+    }, 3000); // Tiempo en milisegundos antes de restaurar el color, tamaño y representación
+}
+
+// Llamar a la función cada cierto tiempo (por ejemplo, cada 5 segundos)
+setInterval(highlightRandomMiniIcosahedron, 3000); // Intervalo en milisegundos
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
 // Función para comprobar si todos los mini icosaedros son naranjas
 function allIcosahedronsAreOrange() {
     return icosahedron.children.every(miniIcosahedron =>
-        miniIcosahedron.material.color.equals(new THREE.Color(0xFF6600))
+        miniIcosahedron.material.color.equals(new THREE.Color(0xFF7600))
+    );
+}
+// Función para comprobar si todos los mini icosaedros son blancos
+function allIcosahedronsAreWhite() {
+    return icosahedron.children.every(miniIcosahedron =>
+        miniIcosahedron.material.color.equals(new THREE.Color(0xFFFFFF))
     );
 }
 
 // Función para reiniciar los colores de los mini icosaedros
 function resetMiniIcosahedronsColor() {
     icosahedron.children.forEach(miniIcosahedron => {
-        miniIcosahedron.material.color.set(0xffffff); // Color por defecto
+        miniIcosahedron.material.color.set(0x1f1f1f); // Color por defecto
         miniIcosahedron.userData.clicked = false;
     });
 }
@@ -144,13 +208,23 @@ function animate() {
     // Comprobar si todos los mini icosaedros son naranjas
     if (allIcosahedronsAreOrange()) {
         // Aumentar la velocidad de rotación para el efecto de giro rápido
-        icosahedron.rotation.x += 0.1;
-        icosahedron.rotation.y += 0.1;
+        icosahedron.rotation.x += 0.02;
+        icosahedron.rotation.y += 0.02;
+        icosahedron.rotation.z += 0.02;
 
         // Puedes usar un temporizador o una condición para determinar cuándo detener el giro y reiniciar los colores
         setTimeout(() => {
             resetMiniIcosahedronsColor();
             // Restablecer la rotación normal del icosaedro grid aquí si es necesario
+        }, 5000); // Ajusta este tiempo según la duración deseada del giro
+    }
+
+    // Comprobar si todos los mini icosaedros son balncos
+    if (allIcosahedronsAreWhite()) {
+        // Aumentar la velocidad de rotación para el efecto de giro rápido
+               // Puedes usar un temporizador o una condición para determinar cuándo detener el giro y reiniciar los colores
+        setTimeout(() => {
+            resetMiniIcosahedronsColor();// Restablecer la rotación normal del icosaedro grid aquí si es necesario
         }, 1000); // Ajusta este tiempo según la duración deseada del giro
     }
 
@@ -159,7 +233,7 @@ function animate() {
     icosahedron.rotation.y += icosahedron.userData.rotationSpeed.y;
     icosahedron.rotation.z += icosahedron.userData.rotationSpeed.z;
 
-    // Rotación de los cubos individuales
+    // Rotación de los icosahedros individuales
     icosahedron.children.forEach(cube => {
         cube.rotation.x += cube.userData.rotationSpeed.x;
         cube.rotation.y += cube.userData.rotationSpeed.y;
@@ -238,6 +312,12 @@ renderer.domElement.addEventListener('touchmove', event => {
     // Evitar la recarga de la página al hacer drag hacia abajo
     event.preventDefault();
 });
+
+
+
+
+
+
 
 
 

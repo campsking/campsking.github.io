@@ -73,7 +73,7 @@ function togglePrototipo() {
         protoContainer.classList.add('boton-mostrar');
         protoContainer.style.display = 'flex';
         toggleButton.classList.add('boton-ocultar');
-        setTimeout(function() {
+        setTimeout(function () {
             toggleButton.style.display = 'none';
         }, 500); // Coincide con la duración de la animación
     } else {
@@ -81,7 +81,7 @@ function togglePrototipo() {
         toggleButton.style.display = 'block';
         toggleButton.classList.add('boton-mostrar');
         protoContainer.classList.add('boton-ocultar');
-        setTimeout(function() {
+        setTimeout(function () {
             protoContainer.style.display = 'none';
             protoContainer.classList.remove('boton-mostrar');
             protoContainer.classList.remove('boton-ocultar');
@@ -92,7 +92,7 @@ function togglePrototipo() {
 function mostrarPrototipo(prototipoId) {
     // Ocultar todos los prototipos
     document.querySelectorAll('.seccion .prototipo').forEach(prototipo => {
-        prototipo.style.display = 'none'; 
+        prototipo.style.display = 'none';
     });
 
     // Mostrar el prototipo seleccionado
@@ -120,8 +120,8 @@ document.querySelectorAll('.elemento-galeria').forEach(elemento => {
     elemento.primerToque = true;
 
     // Manejador para dispositivos táctiles
-    elemento.addEventListener('touchstart', function(event) {
-        
+    elemento.addEventListener('touchstart', function (event) {
+
         event.stopPropagation(); // Detener la propagación del evento
 
         if (elemento.primerToque) {
@@ -135,7 +135,7 @@ document.querySelectorAll('.elemento-galeria').forEach(elemento => {
     });
 
     // Manejador para clic del ratón en modo desktop
-    elemento.addEventListener('click', function(event) {
+    elemento.addEventListener('click', function (event) {
         manejarInteraccion(this, false); // false indica que no es un evento táctil
     });
 });
@@ -182,6 +182,7 @@ function controlarOverlay(elemento) {
         }, 2000); // Ajustar el tiempo según sea necesario
     }
 }
+
 
 
 

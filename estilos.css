@@ -4,30 +4,54 @@ body {
     padding: 0;
     height: 100%;
     background-color: #121212;
+    font-family: 'Cairo', sans-serif;
     /*overflow: hidden; /* Evita barras de desplazamiento innecesarias */
 }
 
-#threejs-background {
-    width: 800px;
-    /* o el tamaño que desees */
-    height: 600px;
-    /* o el tamaño que desees */
-    /* Otras propiedades de estilo como posición, margen, etc. */
+canvas {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 70vh;
+    position: fixed;
 }
 
-/* Asegúrate de que los elementos de contenido tengan un z-index mayor que -1 si es necesario */
-.contenido-principal {
+.cabecera {
+    height: 70vh;
     position: relative;
-    z-index: 10;
-    /* o un número mayor si es necesario */
-    /* Más estilos para tu contenido aquí */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    border-bottom: 1px solid rgb(94, 94, 94);
 }
 
-#contenedor {
-    height: 100%;
+.background-three {
+    position: absolute;
 }
 
-button {
+
+.btn-download {
+    font-family: 'Cairo', sans-serif;
+    font-size: medium;
+    background-color: #2f2f2f;
+    color: white;
+    padding: 8px 16px;
+    border: 2px solid #ff7f00;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ff7b00;
+    /* Cambio de color al pasar el cursor */
+    color: #1f1f1f;
+
+}
+
+/* button {
     font-size: small;
     font-family: 'Cairo', sans-serif;
     font-weight: bold;
@@ -74,7 +98,7 @@ button:hover {
     position: absolute;
     left: -100%;
     animation: slideInLeft 0.5s forwards;
-}
+} */
 
 @keyframes slideOutLeft {
     from {
@@ -98,8 +122,22 @@ button:hover {
 
 /* _______________________SECCIONES__________________________ */
 
-.seccion {
-    height: 10vh;
+#seccion1 {
+    font-size: large;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    flex-direction: column;
+    background-color: #121212;
+    opacity: 0.9;
+    border-top: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px solid rgb(94, 94, 94);
+}
+
+#seccion2 {
+    background-color: #1f1f1f;
+    border-bottom: 1px solid rgb(94, 94, 94);
+    height: auto;
     transition: height 1s;
     cursor: pointer;
     display: flex;
@@ -110,89 +148,125 @@ button:hover {
     overflow: hidden;
 }
 
-#seccion1 {
-    background-color: #151515;
-}
-
-#seccion2 {
-    background-color: #1f1f1f;
-}
-
 #seccion3 {
-    background-color: #2f2f2f;
+    background-color: rgb(0 0 0 / 0%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+    /* gap: 24px; */
+    position: relative;
+
+
+}
+
+.protitpos-figma {
+    /* background-color: #121212; */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    position: relative;
+    justify-content: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 #seccion4 {
-    background-color: #3f3f3f;
+    background-color: #121212;
+    border-top: 1px solid rgb(94, 94, 94);
+    opacity: 0.9;
+    position: relative;
 }
 
-.seccion.activa {
-    height: 70vh;
-}
-
-.seccion.inactiva {
-    height: 10vh;
-}
-
-.seccion h2 {
-    font-family: 'Cairo', sans-serif;
-    font-size: 24px;
-    margin: 10px 0;
-}
-
-/* _______________BIENENIDA - SECCION 1____________________ */
-
-#seccion1.seccion.activa {
-    display: flex;
-}
-
-#seccion1 {
-    font-family: 'Cairo', sans-serif;
+#seccion5 {
     font-size: large;
     display: flex;
     align-items: center;
     min-height: 100px;
     flex-direction: column;
+    background-color: #121212;
+    opacity: 0.9;
+    border-top: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px solid rgb(94, 94, 94);
+}
+
+/* 
+.footer {
+    height: 15vh;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    border-bottom: 1px solid rgb(94, 94, 94);
+    margin-left: 48px;
+    margin-right: 48px;
+} */
+
+
+
+/* Estilos para el contenido del footer */
+.footer-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    border-bottom: 1px solid rgb(94, 94, 94);
+    padding: 24px;
+    gap: 24px;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    min-width: 247px;
+    
 
 }
 
-#seccion1.seccion.activa {
-    height: 80vh;
-
+.footer-id {
+    display: flex;
+    gap: 24px;
 }
 
-#seccion1 .contenido {
+/* Estilos para el footer en dispositivos móviles */
+@media only screen and (max-width: 450px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Ocultar la imagen PNG en dispositivos móviles */
+    .perfil-img {
+        display: none;
+    }
+}
+
+/* _______________SECCION 1____________________ */
+
+
+/* #seccion1 .contenido {
     display: none;
     color: #c4c4c4;
-    max-width: 1700px;
-    /* height: 100vh; */
-}
+} */
 
-#seccion1.seccion.activa .contenido {
+#seccion1 .contenido {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
     gap: 16px;
-    /* overflow-y: auto; */
+    overflow-y: auto;
     overflow-x: hidden;
     margin: 8px;
-
-}
-
-#seccion1.seccion.inactiva .contenido {
-    display: none
-}
-
-#seccion1.seccion.inactiva .h2 {
-    display: flex;
 }
 
 
+/* ______________________cards___________________________________ */
 
-/* ______________________seccion1 cards___________________________________ */
-
-.card {
+/* .card {
     border-radius: 24px;
     padding: 24px;
     max-width: 500px;
@@ -230,17 +304,232 @@ button:hover {
     font-size: smaller;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    transform: scale(1.01);
-}
-
 #contenido {
     flex-basis: calc(100% / 2);
+} */
+
+/* ______________________seccion1 CV___________________________________ */
+.datos {
+    /* margin-left: 48px; */
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.barra-progreso {
+    width: 100px;
+    background-color: #2f2f2f;
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.relleno {
+    background-color: #ff7b00;
+    height: 100%;
+    transition: width 0.3s ease-in-out;
+    border-radius: 4px;
+}
+
+.setenta-y-cinco {
+    width: 75%;
+}
+
+.ochenta {
+    width: 80%;
+}
+
+.noventa {
+    width: 90%;
+}
+
+.treinta {
+    width: 30%;
+}
+
+.quince {
+    width: 15%;
+}
+
+.diez {
+    width: 10%;
+}
+
+.cien {
+    width: 100%;
+}
+
+h6 {
+    color: #888;
+    font-size: 18px;
+    margin: 0;
+    line-height: 24px;
+    /* min-width: 325px; */
+    padding-left: 16px;
+}
+
+.titulo {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+
+}
+
+.nombre {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    mix-blend-mode: difference;
+}
+
+.nombre-seccion {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin-top: 50px;
+    mix-blend-mode: difference;
 }
 
 
-/* ______________________GALERIA - SECCION 2___________________________________ */
+
+h1 {
+    font-size: 28px;
+    color: #ff7b00;
+    margin: 0;
+    line-height: 28px;
+}
+
+h4 {
+    font-size: 18px;
+    color: hsl(0, 0%, 30%);
+    margin: 0;
+    text-align: left;
+    line-height: 18px;
+}
+
+h3 {
+    color: #ff7b00;
+    margin: 0;
+}
+
+p {
+    color: #888;
+    font-size: 18px;
+    margin: 0;
+    line-height: 24px;
+    min-width: 325px;
+}
+
+h5 {
+    color: #888;
+    font-size: medium;
+    margin: 0;
+    line-height: 18px;
+    background-color: #1f1f1f;
+    border-radius: 16px;
+    margin-left: 8p;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.tag {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tag_software {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    min-width: 325px;
+}
+
+.software {
+    display: flex;
+}
+
+.skill {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.label {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.cv-content {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 90%;
+    margin-bottom: 24px;
+    margin-top: 10px;
+}
+
+.cv-top {
+    display: flex;
+    min-width: 300px;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 90%;
+}
+
+.cv-top-label {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.bloque-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* max-width: 700px; */
+    min-width: 325px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.bloque-1 {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.grupo-tag {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* ______________________GALERIA ___________________________________ */
 
 .overlay {
     position: absolute;
@@ -254,32 +543,24 @@ button:hover {
     align-items: center;
     opacity: 0;
     transition: opacity 0.5s;
-    border-radius: 24px; /* Si tus imágenes tienen bordes redondeados */
+    border-radius: 24px;
 }
 
 .elemento-galeria:hover .overlay {
     opacity: 1;
 }
 
-.like-icon, .like-counter {
+.like-icon,
+.like-counter {
     color: white;
     font-size: 24px;
     margin: 0 10px;
 }
 
-.galeria {
-    display: none;
-    overflow-x: auto;
-    white-space: nowrap;
-    height: 60vh;
-    gap: 16px;
-    padding: 16px;
-    transition: scroll-left 0.3s ease-out;
-}
 
 .elemento-galeria {
     position: relative;
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
 
 .elemento-galeria img {
@@ -289,280 +570,67 @@ button:hover {
     border-radius: 24px;
 }
 
-.seccion.activa .galeria {
+.galeria {
     display: flex;
-    flex-direction: row;
-}
-
-#seccion2.activa h2 {
-    display: flex;
-}
-
-#seccion2.activa h3 {
-    display: flex;
-}
-
-#seccion2.activa p {
-    display: flex;
-}
-
-#seccion3.activa h2 {
-    display: flex;
-    position: relative;
-    margin-bottom: 20px;
-}
-
-/* .galeria {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* flex-direction: column;
+    align-items: center; */
     overflow-y: auto;
-    max-width: 1800px;
-}
-
-.proyecto-galeria {
-    margin: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-direction: row; 
-}
-
-.imagenes_proyecto-galeria {
-    display: flex;
-    flex-direction: row;
+    /* max-width: 1800px; */
     overflow-x: auto;
-    overflow-y: hidden;
-    align-items: start;
-    width: 100%;
-    max-width: 1800px;
+    white-space: nowrap;
+    height: 60vh;
     gap: 16px;
+    transition: scroll-left 0.3s ease-out;
+    padding-left: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-right: 16px;
 }
 
-.imagenes_proyecto-galeria .imagen_proyecto img {
-    border-radius: 16px;
-    min-width: 100px;
-    max-height: 60vh;
-} */
-
-#seccion2.seccion.activa .texto-proyecto {
-    font-family: 'Cairo', sans-serif;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
-}
-
-.texto-proyecto {
-    display: none;
-}
-
-#seccion2.seccion.activa {
+.seccion2 {
     display: flex;
 }
 
-#seccion2.seccion.activa .galeria {
-    display: flex;
-}
-
-#seccion2 .galeria {
-    display: none;
-}
-
-#seccion2.activa h2 {
-    display: none;
-}
-
-
-
-#seccion4.activa #formularioContacto {
-    display: block;
-    /* Muestra el formulario cuando la sección 4 está activa */
-}
-
-/* Estilo para todas las barras de desplazamiento */
 ::-webkit-scrollbar {
     width: 4px;
-    /* Ancho de la barra de desplazamiento horizontal */
     height: 4px;
-    /* Altura de la barra de desplazamiento vertical */
 }
 
-/* Estilo para el rastro de la barra (la parte que no es el pulgar) */
 ::-webkit-scrollbar-track {
     background: transparent;
-    /* Puedes cambiar esto si quieres un color de fondo */
 }
 
-/* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
 ::-webkit-scrollbar-thumb {
     background: #888;
-    /* Color del pulgar */
     border-radius: 10px;
-    /* Bordes redondeados para el pulgar */
 }
 
-/* Cambiar el color del pulgar al pasar el ratón por encima */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
-    /* Color del pulgar al pasar el ratón */
 }
 
 /* ____________________PROTOTIPOS FIGMA - SECCION 3_________________________________ */
 
-
 #prototipo1 iframe {
-    margin-top: -55%;
-    margin-bottom: -60%;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 100%;
-    min-height: 100vh;
-    min-width: 50vh;
-}
+    max-height: 748px;
+    min-height: 748px;
+    width: 325px;
+    /* margin-top: -48px;
+    margin-bottom: -48px; */
 
+}
 
 #prototipo2 iframe {
-    margin-top: -55%;
-    margin-bottom: -60%;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 100%;
-    min-height: 100vh;
-    min-width: 50vh;
-}
+    max-height: 748px;
+    min-height: 748px;
+    width: 325px;
+    /* margin-top: -48px;
+    margin-bottom: -48px; */
 
-.prototipos {
-    display: none;
-}
-
-.prototipos {
-    display: none;
-}
-
-#seccion3.seccion.activa {
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100vh;
-}
-
-#seccion3.seccion.activa .prototipos {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100vh;
-    margin-top: 6vh;
-    margin-bottom: 6vh;
-    overflow: hidden;
-    overflow-x: hidden;
-}
-
-#seccion3.seccion.activa h2 {
-    display: none;
-}
-
-/* _______________________CONTACTO - SECCION 4______________________________*/
-
-.redes-sociales {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    margin: 16px;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-}
-
-
-
-
-#seccion4.seccion.activa {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    flex-direction: column;
-}
-
-#formularioContacto {
-    font-family: 'Cairo', sans-serif;
-    display: none;
-    max-width: 80vh;
-    width: 90%;
-}
-
-.campo-formulario {
-    display: flex;    
-    align-items: flex-start;
-    align-self: stretch;
-    flex-direction: column;
-}
-
-.campo-formulario label {
-    display: block;
-    margin-bottom: 5px;
-    min-height: 18px;
-    font-family: 'Cairo', sans-serif;
-}
-
-#nombre {
-    min-height: 18px;
-    font-family: 'Cairo', sans-serif;
-    font-size: larger;
-    padding: 6px;
-
-}
-
-#email {
-    min-height: 24px;
-    font-family: 'Cairo', sans-serif;
-    font-size: larger;
-    padding: 6px;
-
-}
-
-.campo-formulario input[type="text"],
-.campo-formulario input[type="email"],
-.campo-formulario textarea {
-    border-radius: 8px;
-    background-color: #2f2f2f;    /* Fondo oscuro */
-    color: white;    /* Texto blanco */
-    border: 1px solid #4f4f4f;    /* Borde sutil */
-    align-self: stretch;
-    min-height: 80px;
-}
-
-.campo-formulario textarea {
-    background-color: #2f2f2f;
-    font-size: larger;
-    padding: 16px;
-}
-
-button[type="submit"] {
-    background-color: #2f2f2f;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    height: 48px;
-    margin-top: 16px;
-    border-radius: 12px;
-}
-
-button[type="submit"]:hover {
-    background-color: #1f1f1f;
-    width: 100%;
-    color: #00e1ff;
-    height: 48px;
-}
-
-
-.circle:hover {
-    cursor: pointer;
 }
