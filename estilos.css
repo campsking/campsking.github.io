@@ -627,7 +627,7 @@ h5 {
     margin-bottom: 24px;
     margin-top: 10px;
     width: auto;
-    width: 1470px;
+    /* max-width: 1470px; */
 }
 
 .cv-top {
