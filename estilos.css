@@ -25,80 +25,143 @@ canvas {
     align-items: center;
     mix-blend-mode: difference;
     pointer-events: none;
-    border-bottom: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px
 }
 
 .background-three {
     position: absolute;
 }
 
-
 .btn-download {
-    font-family: 'Cairo', sans-serif;
-    font-size: medium;
-    background-color: #2f2f2f;
-    color: white;
-    padding: 8px 16px;
-    border: 2px solid #ff7f00;
+    padding: 12px 30px;
     border-radius: 16px;
-    cursor: pointer;
-}
-
-.button:hover {
+    border: 0;
     background-color: #ff7b00;
-    /* Cambio de color al pasar el cursor */
-    color: #1f1f1f;
-
-}
-
-/* button {
-    font-size: small;
-    font-family: 'Cairo', sans-serif;
-    font-weight: bold;
-    background-color: #ff7b00;
-    color: #2f2f2f;
-    border: none;
-    border-radius: 0 15px 15px 0;
+    /* letter-spacing: 1.5px; */
+    font-size: 16px;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+    box-shadow: #c45f00 0px 7px 0px 0px;
+    color: #121212;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    padding: 16px;
-    transition: 1s ease;
-
 }
 
 button:hover {
-    background-color: #3f3f3f;
+    box-shadow: #9e4c00;
     color: #ffffff;
-    align-self: stretch;
-    transition: 1s ease;
+
 }
 
-.btn_proto {
+button:active {
+    background-color: #ff7b00;
+    /*50, 168, 80*/
+    box-shadow: #c45f00 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+}
+
+.btn-copy {
+    box-sizing: border-box;
+    width: var(--button-diameter);
+    height: var(--button-diameter);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.btn-copy img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cp-clipboard {
+    display: block;
+    /* Muestra el icono de copiar por defecto */
+}
+
+.cp-check-mark {
+    display: none;
+    /* Oculta el icono de check por defecto */
+}
+
+/* Estilos cuando se ha copiado */
+.btn-copy.copied .cp-clipboard {
+    display: none;
+    /* Oculta el icono de copiar */
+}
+
+.btn-copy.copied .cp-check-mark {
+    display: block;
+    /* Muestra el icono de check */
+}
+
+.btn-copy:focus:not(:focus-visible) .cp-clipboard {
+    display: none;
+    /* Opcional, si no necesitas el icono de copiar visible en foco */
+}
+
+.btn-copy:focus:not(:focus-visible) .cp-check-mark {
+    display: block;
+    /* Opcional, si quieres que el icono de check esté visible en foco */
+}
+
+.btn-copy:hover,
+.btn-copy:focus {
+    background-color: var(--button-hover-bg);
+}
+
+.btn-copy:hover img {
+    color: var(--button-hover-text-color);
+}
+
+
+.texto-copiable {
+    color: #888;
+    font-size: medium;
+    margin: 0;
+    line-height: 18px;
+    background-color: #1f1f1f;
+    border-radius: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    position: absolute;
-    gap: 8px;
-    left: 0%;
+    align-items: center;
+    gap: 16px;
 }
 
-.boton-ocultar {
-    position: absolute;
-    animation: slideOutLeft 0.5s forwards;
+.texto-copiable a {
+    color: #888;
+    /* Color del texto del enlace */
+    text-decoration: none;
+    /* Elimina el subrayado del enlace */
 }
 
-.boton-mostrar {
-    display: flex;
-    position: absolute;
-    position: absolute;
-    left: -100%;
-    animation: slideInLeft 0.5s forwards;
-} */
+.texto-copiable a:hover {
+    color: #8bb9fe;
+}
+
+.btn-email {
+    color: #888;
+    /* Color del texto del enlace */
+    text-decoration: none;
+    /* Elimina el subrayado del enlace */
+    display: inline-flex;
+    /* Flexbox en línea para que el texto se comporte como un botón */
+    align-items: center;
+    /* Alinea verticalmente el texto */
+}
+
+.btn-email:hover {
+    color: #8bb9fe;
+}
 
 @keyframes slideOutLeft {
     from {
@@ -131,7 +194,7 @@ button:hover {
     background-color: #121212;
     opacity: 0.9;
     border-top: 1px solid rgb(94, 94, 94);
-    border-bottom: 1px solid rgb(94, 94, 94);
+    /* border-bottom: 1px solid rgb(94, 94, 94); */
 }
 
 #seccion2 {
@@ -189,24 +252,26 @@ button:hover {
     flex-direction: column;
     background-color: #121212;
     opacity: 0.9;
-    border-top: 1px solid rgb(94, 94, 94);
-    border-bottom: 1px solid rgb(94, 94, 94);
+    /* border-top: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px solid rgb(94, 94, 94); */
 }
 
-/* 
-.footer {
-    height: 15vh;
-    position: relative;
+#seccion6 {
+    font-size: large;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    mix-blend-mode: difference;
-    pointer-events: none;
-    border-bottom: 1px solid rgb(94, 94, 94);
-    margin-left: 48px;
-    margin-right: 48px;
-} */
+    min-height: 100px;
+    flex-direction: column;
+    background-color: #121212;
+    opacity: 0.9;
+    /* border-top: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px solid rgb(94, 94, 94); */
+    /* padding: 5vh; */
+    /* margin: 16px; */
+    /* overflow: hidden; */
+    padding: 16px;
 
+}
 
 
 /* Estilos para el contenido del footer */
@@ -216,14 +281,12 @@ button:hover {
     justify-content: space-between;
     mix-blend-mode: difference;
     pointer-events: none;
-    border-bottom: 1px solid rgb(94, 94, 94);
+    /* border-bottom: 1px solid rgb(94, 94, 94); */
     padding: 24px;
     gap: 24px;
     flex-wrap: nowrap;
     align-items: stretch;
     min-width: 247px;
-    
-
 }
 
 .footer-id {
@@ -256,7 +319,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -266,47 +329,99 @@ button:hover {
 
 /* ______________________cards___________________________________ */
 
-/* .card {
-    border-radius: 24px;
-    padding: 24px;
-    max-width: 500px;
+/* From Uiverse.io by gharsh11032000 */
+.card {
     position: relative;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    overflow: hidden;
+    border-radius: 16px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    /* background: #292929; */
+    width: auto;
+    max-width: 300px;
+    min-width: 280px;
+    transition: all 0.5s ease;
+    /* Transición fluida */
+
+}
+
+@media (max-width: 600px) {
+    .tarjeta {
+        flex: 1 1 100%;
+        /* Cambia a 100% de ancho en pantallas pequeñas */
+    }
+}
+
+.content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    background-color: #2f2f2f;
-    align-content: flex-start;
-    align-items: flex-end;
-    user-select: none;
+    align-items: flex-start;
+    gap: 20px;
+    color: #ffffff;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    width: auto;
 }
 
-.card-icon {
-    width: 24px;
-    height: 24px;
-    position: relative;
-    color: #ff7b00;
+.content .heading {
+    font-weight: 700;
+    font-size: 32px;
+    width: fit-content;
+    line-height: 36px;
 }
 
-.card-title {
-    margin-bottom: auto;
-    font-size: 1.2em;
+.content .para {
+    line-height: 1.5;
 }
 
-
-.card-content h2 {
-    margin-top: 0;
+.card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0px;
+    height: 100%;
+    background: linear-gradient(-450deg, #2f2f2f 0%, #313131 100%);
+    z-index: -1;
+    transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.card-content p {
-    font: menu;
-    font-size: smaller;
+.card:hover::before {
+    width: 100%;
+
 }
 
-#contenido {
-    flex-basis: calc(100% / 2);
-} */
+.card:hover {
+    box-shadow: none;
+    color: #121212;
+}
+
+.card:hover .btn-download {
+    padding: 12px 30px;
+    border-radius: 16px;
+    border: 0;
+    background-color: #ff7b00;
+    /* letter-spacing: 1.5px; */
+    font-size: 16px;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+    box-shadow: #c45f00 0px 7px 0px 0px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.card:hover .content p {
+    color: #d4d4d4;
+
+}
+
+.content .btn:active {
+    box-shadow: none;
+}
 
 /* ______________________seccion1 CV___________________________________ */
 .datos {
@@ -397,6 +512,16 @@ h6 {
     mix-blend-mode: difference;
 }
 
+.nombre-seccion-cards {
+    gap: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    mix-blend-mode: difference;
+    gap: 24px;
+}
 
 
 h1 {
@@ -424,7 +549,8 @@ p {
     font-size: 18px;
     margin: 0;
     line-height: 24px;
-    min-width: 325px;
+    /* min-width: 325px; */
+
 }
 
 h5 {
@@ -434,11 +560,13 @@ h5 {
     line-height: 18px;
     background-color: #1f1f1f;
     border-radius: 16px;
-    margin-left: 8p;
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 8px;
     padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .tag {
@@ -480,6 +608,15 @@ h5 {
     justify-content: flex-start;
 }
 
+.label2 {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .cv-content {
     display: flex;
     gap: 24px;
@@ -489,6 +626,8 @@ h5 {
     width: 90%;
     margin-bottom: 24px;
     margin-top: 10px;
+    width: auto;
+    width: 1470px;
 }
 
 .cv-top {
@@ -497,6 +636,7 @@ h5 {
     gap: 24px;
     flex-wrap: wrap;
     max-width: 90%;
+    max-width: 1470PX;
 }
 
 .cv-top-label {

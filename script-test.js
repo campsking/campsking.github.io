@@ -313,6 +313,35 @@ renderer.domElement.addEventListener('touchmove', event => {
     event.preventDefault();
 });
 
+function copiarAlPortapapeles(idElemento) {
+    // Obtener el texto del elemento por su ID
+    const textoACopiar = document.getElementById(idElemento).innerText;
+
+    // Crear un input temporal para copiar el texto
+    const inputTemporal = document.createElement("input");
+    inputTemporal.value = textoACopiar;
+    document.body.appendChild(inputTemporal);
+
+    // Seleccionar y copiar el texto
+    inputTemporal.select();
+    document.execCommand("copy");
+
+    // Eliminar el input temporal
+    document.body.removeChild(inputTemporal);
+
+    // Cambiar el icono del botón
+    const btnCopy = document.querySelector('.btn-copy');
+    btnCopy.classList.add('copied');
+    
+    // Restaurar el icono después de unos segundos
+    setTimeout(() => {
+        btnCopy.classList.remove('copied');
+    }, 2000);
+}
+
+
+
+
 
 
 
