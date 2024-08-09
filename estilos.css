@@ -231,10 +231,12 @@ button:active {
     /* padding: 5vh; */
     margin: 16px;
     /* overflow: hidden; */
-    padding: 64px;
+    /* padding: 64px; */
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
+    padding-bottom: 64px;
+    padding-top: 64px;
 
 }
 
