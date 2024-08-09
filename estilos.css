@@ -356,12 +356,12 @@ button:active {
     display: flex;
     justify-content: center;
     width: 320px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     padding: 24px;
     overflow: hidden;
     border-radius: 24px;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-    /* background: #292929; */
+    /* background: #2f2f2f; */
     width: auto;
     max-width: 300px;
     min-width: 280px;
@@ -369,13 +369,6 @@ button:active {
     height: 340px;
     align-items: stretch;
 
-}
-
-@media (max-width: 600px) {
-    .tarjeta {
-        flex: 1 1 100%;
-        /* Cambia a 100% de ancho en pantallas pequeñas */
-    }
 }
 
 .content {
@@ -460,6 +453,13 @@ button:active {
 
 .content .btn:active {
     box-shadow: none;
+}
+
+@media (max-width: 600px) {
+    .tarjeta {
+        flex: 1 1 100%;
+        /* Cambia a 100% de ancho en pantallas pequeñas */
+    }
 }
 
 /* ______________________seccion1 CV___________________________________ */
