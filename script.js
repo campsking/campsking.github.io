@@ -162,26 +162,7 @@ function incrementarLikes(elemento) {
     }
 }
 
-function controlarOverlay(elemento) {
-    let overlay = elemento.querySelector('.overlay');
-    if (overlay) {
-        // Agregar la clase para mostrar el overlay
-        overlay.classList.add('overlay-activo');
 
-        // Cancelar el temporizador anterior si existe
-        if (elemento.temporizadorOverlay) {
-            clearTimeout(elemento.temporizadorOverlay);
-        }
-
-        // Configurar un nuevo temporizador para ocultar el overlay
-        elemento.temporizadorOverlay = setTimeout(() => {
-            overlay.classList.remove('overlay-activo');
-            if (esTactil) {
-                elemento.primerToque = true; // Resetear para dispositivos táctiles
-            }
-        }, 2000); // Ajustar el tiempo según sea necesario
-    }
-}
 
 
 

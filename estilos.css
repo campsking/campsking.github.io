@@ -75,40 +75,11 @@ button:active {
 
 .btn-copy img {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    /* top: 50%; */
+    /* left: 50%; */
     transform: translate(-50%, -50%);
-}
-
-.cp-clipboard {
-    display: block;
-    /* Muestra el icono de copiar por defecto */
-}
-
-.cp-check-mark {
-    display: none;
-    /* Oculta el icono de check por defecto */
-}
-
-/* Estilos cuando se ha copiado */
-.btn-copy.copied .cp-clipboard {
-    display: none;
-    /* Oculta el icono de copiar */
-}
-
-.btn-copy.copied .cp-check-mark {
-    display: block;
-    /* Muestra el icono de check */
-}
-
-.btn-copy:focus:not(:focus-visible) .cp-clipboard {
-    display: none;
-    /* Opcional, si no necesitas el icono de copiar visible en foco */
-}
-
-.btn-copy:focus:not(:focus-visible) .cp-check-mark {
-    display: block;
-    /* Opcional, si quieres que el icono de check esté visible en foco */
+    height: 24px;
+    width: 24px;
 }
 
 .btn-copy:hover,
@@ -123,16 +94,8 @@ button:active {
 
 .texto-copiable {
     color: #888;
-    font-size: medium;
-    margin: 0;
-    line-height: 18px;
-    background-color: #1f1f1f;
-    border-radius: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    display: flex;
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
     gap: 16px;
 }
@@ -191,10 +154,11 @@ button:active {
     align-items: center;
     min-height: 100px;
     flex-direction: column;
-    background-color: #121212;
+    /* background-color: #121212; */
     opacity: 0.9;
-    border-top: 1px solid rgb(94, 94, 94);
+    /* border-top: 1px solid rgb(94, 94, 94); */
     /* border-bottom: 1px solid rgb(94, 94, 94); */
+    margin-bottom: 50px;
 }
 
 #seccion2 {
@@ -259,20 +223,34 @@ button:active {
 #seccion6 {
     font-size: large;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     min-height: 100px;
-    flex-direction: column;
-    background-color: #121212;
+    flex-direction: row;
+    /* background-color: #121212; */
     opacity: 0.9;
-    /* border-top: 1px solid rgb(94, 94, 94);
-    border-bottom: 1px solid rgb(94, 94, 94); */
     /* padding: 5vh; */
-    /* margin: 16px; */
+    margin: 16px;
     /* overflow: hidden; */
-    padding: 16px;
+    padding: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
 
 }
 
+.contenido_seccion6 {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    /* Espacio entre etiquetas */
+}
 
 /* Estilos para el contenido del footer */
 .footer-content {
@@ -285,13 +263,25 @@ button:active {
     padding: 24px;
     gap: 24px;
     flex-wrap: nowrap;
-    align-items: stretch;
+    align-items: center;
     min-width: 247px;
 }
+
+/* .footer {
+    display: flex;
+    gap: 24px;
+} */
 
 .footer-id {
     display: flex;
     gap: 24px;
+    align-items: center;
+}
+
+.perfil-img {
+    display: flex;
+    width: 87px;
+    height: 87px;
 }
 
 /* Estilos para el footer en dispositivos móviles */
@@ -304,16 +294,13 @@ button:active {
     /* Ocultar la imagen PNG en dispositivos móviles */
     .perfil-img {
         display: none;
+        width: 100px;
     }
 }
 
+
 /* _______________SECCION 1____________________ */
 
-
-/* #seccion1 .contenido {
-    display: none;
-    color: #c4c4c4;
-} */
 
 #seccion1 .contenido {
     display: flex;
@@ -321,9 +308,43 @@ button:active {
     align-content: flex-start;
     justify-content: flex-start;
     gap: 16px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
     margin: 8px;
+}
+
+.cv-content {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 90%;
+    /* margin-bottom: 24px;
+    margin-top: 10px; */
+    width: auto;
+    /* max-width: 1470px; */
+    /* overflow: auto; */
+    border-radius: 24px;
+    background: #202020;
+    /* box-shadow: 15px 15px 30px rgb(25, 25, 25),
+        -15px -15px 30px rgb(41, 41, 41); */
+
+}
+
+.cv-content_skills {
+    display: flex;
+    gap: 68px;
+    padding: 24px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: auto;
+    max-width: 625px;
+    border-radius: 24px;
+    background: #202020;
+
+    /* height: fit-content; */
+
 }
 
 
@@ -333,20 +354,20 @@ button:active {
 .card {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
     width: 320px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    padding: 32px;
+    padding: 24px;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 24px;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
     /* background: #292929; */
     width: auto;
     max-width: 300px;
     min-width: 280px;
     transition: all 0.5s ease;
-    /* Transición fluida */
+    height: 340px;
+    align-items: stretch;
 
 }
 
@@ -360,18 +381,22 @@ button:active {
 .content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 20px;
     color: #ffffff;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
     width: auto;
+    justify-content: space-around;
 }
 
 .content .heading {
+    display: flex;
     font-weight: 700;
     font-size: 32px;
     width: fit-content;
     line-height: 36px;
+    min-height: 80px;
+    align-items: flex-end;
 }
 
 .content .para {
@@ -414,6 +439,20 @@ button:active {
     cursor: pointer;
 }
 
+.card .btn-download {
+    padding: 12px 30px;
+    border-radius: 16px;
+    border: 0;
+    background-color: #2f2f2f;
+    /* letter-spacing: 1.5px; */
+    font-size: 16px;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+    box-shadow: #272727 0px 7px 0px 0px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
 .card:hover .content p {
     color: #d4d4d4;
 
@@ -433,11 +472,13 @@ button:active {
 }
 
 .barra-progreso {
-    width: 100px;
-    background-color: #2f2f2f;
+    background-color: #1a1a1a;
     height: 10px;
     border-radius: 10px;
     overflow: hidden;
+    max-width: 200px;
+    min-width: 100px;
+
 }
 
 .relleno {
@@ -488,6 +529,7 @@ h6 {
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
+    align-items: flex-start;
 
 }
 
@@ -513,7 +555,7 @@ h6 {
 }
 
 .nombre-seccion-cards {
-    gap: 12px;
+    /* gap: 12px; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -533,15 +575,17 @@ h1 {
 
 h4 {
     font-size: 18px;
-    color: hsl(0, 0%, 30%);
+    color: #888;
     margin: 0;
     text-align: left;
     line-height: 18px;
+    width: 156px;
 }
 
 h3 {
     color: #ff7b00;
     margin: 0;
+    /* width: 20px; */
 }
 
 p {
@@ -550,6 +594,7 @@ p {
     margin: 0;
     line-height: 24px;
     /* min-width: 325px; */
+    max-width: 1100px;
 
 }
 
@@ -558,33 +603,42 @@ h5 {
     font-size: medium;
     margin: 0;
     line-height: 18px;
-    background-color: #1f1f1f;
+    /* background-color: #1f1f1f; */
     border-radius: 16px;
     padding-left: 16px;
-    padding-right: 16px;
+    /* padding-right: 16px; */
     padding-top: 8px;
     padding-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 16px;
 }
 
 .tag {
     display: flex;
-    gap: 16px;
+    /* gap: 16px; */
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
+    background-color: #1b1b1b;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 16px;
+    color: #7b7b7b;
 }
 
 .tag_software {
-    display: flex;
+    /* display: flex; */
     gap: 24px;
-    align-items: stretch;
-    flex-direction: column;
+    /* align-items: stretch; */
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    min-width: 325px;
+    justify-content: space-around;
+    /* min-width: 325px; */
+    flex-direction: column;
+    display: grid;
+    justify-items: stretch;
+    align-content: space-evenly;
 }
 
 .software {
@@ -594,9 +648,10 @@ h5 {
 .skill {
     display: flex;
     gap: 24px;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .label {
@@ -617,26 +672,14 @@ h5 {
     justify-content: flex-start;
 }
 
-.cv-content {
-    display: flex;
-    gap: 24px;
-    padding: 24px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 90%;
-    margin-bottom: 24px;
-    margin-top: 10px;
-    width: auto;
-    /* max-width: 1470px; */
-}
 
 .cv-top {
     display: flex;
     min-width: 300px;
     gap: 24px;
     flex-wrap: wrap;
-    max-width: 90%;
-    max-width: 1470PX;
+    /* max-width: 90%; */
+    max-width: 1424PX;
 }
 
 .cv-top-label {
@@ -650,11 +693,12 @@ h5 {
 .bloque-skills {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 26px;
     /* max-width: 700px; */
-    min-width: 325px;
+    /* min-width: 270px; */
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: space-between;
+    align-items: flex-start;
 }
 
 .bloque-1 {
@@ -667,6 +711,17 @@ h5 {
     display: flex;
     gap: 16px;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.grupo-tag-lebel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 16px;
+
 }
 
 /* ______________________GALERIA ___________________________________ */
@@ -772,5 +827,12 @@ h5 {
     width: 325px;
     /* margin-top: -48px;
     margin-bottom: -48px; */
+
+}
+
+.grupo-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 
 }

@@ -5,7 +5,7 @@ const camera = new THREE.PerspectiveCamera(35, window.innerWidth / (window.inner
 camera.position.z = 20;
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight * 1); // Cambiar aquí para el alto
+renderer.setSize(window.innerWidth, window.innerHeight * 1);
 document.body.appendChild(renderer.domElement);
 
 // Manejador de eventos para ajustar el tamaño cuando se cambia el tamaño de la ventana
@@ -15,38 +15,36 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / (window.innerHeight * 1);
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight * 1);
-    
-    // Renderizar la escena nuevamente
+
     render();
 }
 
 // Renderizar la escena
 function render() {
-    // Llamar al método render de Three.js con la escena y la cámara
     renderer.render(scene, camera);
 }
 
 // Escuchar el evento de redimensionamiento de la ventana y llamar a la función onWindowResize
 window.addEventListener('resize', onWindowResize, false);
 
-// Agregar Luz Ambiental y Direccional
+// Luz Ambiental y Direccional
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(0, 1, 1);
 scene.add(directionalLight);
 
-// Crear un icosaedro visible y añadirlo a la escena
+// Icosaedro principal
 const icosahedronGeometry = new THREE.IcosahedronGeometry(9, 0);
 const icosahedronMaterial = new THREE.MeshBasicMaterial({ color: 0x1f1f1f, wireframe: true });
 const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
 scene.add(icosahedron);
 
-// Asignar una velocidad de rotación visible al icosaedro
+// Velocidad de rotación Icosaedro Principal
 icosahedron.userData.rotationSpeed = new THREE.Vector3(
-    0.0006, // X axis
-    0.0006, // Y axis
-    0.0006  // Z axis
+    0.0006, // X
+    0.0006, // Y
+    0.0006  // Z
 );
 
 const positionAttribute = icosahedronGeometry.attributes.position;
@@ -66,7 +64,7 @@ for (let i = 0; i < positionAttribute.count; i++) {
         // Aplicar una posición inicial desplazada en función del índice
         miniIcosahedron.position.copy(vertex).multiplyScalar(1.1);
 
-        // Agregar el mini icosaedro como hijo del icosaedro original
+        // Agregar mini icosaedro child al Icosaedro Principal
         icosahedron.add(miniIcosahedron);
 
         // Almacenar la posición creada
@@ -74,21 +72,21 @@ for (let i = 0; i < positionAttribute.count; i++) {
 
         // Agregar una velocidad de rotación a cada mini icosaedro
         miniIcosahedron.userData.rotationSpeed = new THREE.Vector3(
-            Math.random() * 0.01 - 0.006, // Rotación en el eje X
-            Math.random() * 0.01 - 0.006, // Rotación en el eje Y
-            Math.random() * 0.01 - 0.006  // Rotación en el eje Z
+            Math.random() * 0.01 - 0.006, // X
+            Math.random() * 0.01 - 0.006, // Y
+            Math.random() * 0.01 - 0.006  // Z
         );
-        // Paso 1: Agregar un indicador para rastrear si el mini icosaedro ha sido clickeado
+        // rastrear si el mini icosaedro ha sido clickeado
         miniIcosahedron.userData.clicked = false;
     }
 }
 
-// Estilo de los icosaedros
+// Estilo de los mini icosahedro
 icosahedron.children.forEach(miniIcosahedron => {
-    miniIcosahedron.visible = true; // Asegurarse de que el icosaedro esté visible
+    miniIcosahedron.visible = true; // Visibilidad
 });
 
-// Paso 2: Configurar el controlador de eventos de clic
+// Configurar el controlador de eventos de clic
 function onDocumentMouseDown(event) {
     event.preventDefault();
 
@@ -135,32 +133,29 @@ function highlightRandomMiniIcosahedron() {
     const randomIndex = Math.floor(Math.random() * availableMiniIcosahedrons.length);
     const miniIcosahedron = availableMiniIcosahedrons[randomIndex];
 
-    // Cambiar la representación a alámbrica (wireframe)
-    miniIcosahedron.material.wireframe = true;
+    // Cambiar a (wireframe)
+    miniIcosahedron.material.wireframe = false;
 
     // Cambiar el color a naranja
     miniIcosahedron.material.color.set(0x6f6f6f);
-    miniIcosahedron.userData.clicked = false;
+    miniIcosahedron.userData.clicked = false; // bloquea mouse click
 
     // Reducir temporalmente el tamaño del mini icosaedro
-    const originalScale = miniIcosahedron.scale.clone();
-    miniIcosahedron.scale.multiplyScalar(1); // Reducir el tamaño a un 80%
+    //const originalScale = miniIcosahedron.scale.clone();
+    //miniIcosahedron.scale.multiplyScalar(1); // Reducir el tamaño a un 80%
 
-    // Establecer un temporizador para restaurar el color original, el tamaño y la representación después de cierto tiempo (por ejemplo, 2 segundos)
+    // temporizador para restaurar el color original, el tamaño y la representación
     setTimeout(() => {
         miniIcosahedron.material.wireframe = false; // Restaurar la representación original
         miniIcosahedron.material.color.set(0x1f1f1f); // Color original
         miniIcosahedron.scale.copy(originalScale); // Restaurar el tamaño original
         // miniIcosahedron.material.wireframe = false;
-    }, 3000); // Tiempo en milisegundos antes de restaurar el color, tamaño y representación
+    }, 3000); // milisegundos antes de restaurar el color, tamaño y representación
 }
-
-// Llamar a la función cada cierto tiempo (por ejemplo, cada 5 segundos)
-setInterval(highlightRandomMiniIcosahedron, 3000); // Intervalo en milisegundos
-
+// Llamar a la función cada cierto tiempo
+setInterval(highlightRandomMiniIcosahedron, 3000); // milisegundos
 
 //////////////////////////////////////////////////////////////////////////////////////
-
 
 // Función para comprobar si todos los mini icosaedros son naranjas
 function allIcosahedronsAreOrange() {
@@ -186,8 +181,6 @@ function resetMiniIcosahedronsColor() {
 // Agregar el controlador de eventos de clic al documento
 document.addEventListener('mousedown', onDocumentMouseDown, false);
 
-
-
 // Raycaster para interacción
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -198,7 +191,7 @@ window.addEventListener('mousemove', event => {
 
 // Variables globales para controlar la animación
 let isAnimating = false;
-let rotationSpeed = { x: 0.005, y: 0.005 }; // Velocidad normal de rotación
+let rotationSpeed = { x: 0.0005, y: 0.0005 }; // Velocidad normal de rotación
 let maxRotationSpeed = { x: 0.1, y: 0.1 }; // Velocidad máxima para la animación rápida
 
 // Función de animación
@@ -212,20 +205,18 @@ function animate() {
         icosahedron.rotation.y += 0.02;
         icosahedron.rotation.z += 0.02;
 
-        // Puedes usar un temporizador o una condición para determinar cuándo detener el giro y reiniciar los colores
+        // timeout para detener evento de giro
         setTimeout(() => {
             resetMiniIcosahedronsColor();
-            // Restablecer la rotación normal del icosaedro grid aquí si es necesario
-        }, 5000); // Ajusta este tiempo según la duración deseada del giro
+        }, 5000); // tiempo milisegundos
     }
 
     // Comprobar si todos los mini icosaedros son balncos
     if (allIcosahedronsAreWhite()) {
-        // Aumentar la velocidad de rotación para el efecto de giro rápido
-               // Puedes usar un temporizador o una condición para determinar cuándo detener el giro y reiniciar los colores
+        // time out giro blanco
         setTimeout(() => {
-            resetMiniIcosahedronsColor();// Restablecer la rotación normal del icosaedro grid aquí si es necesario
-        }, 1000); // Ajusta este tiempo según la duración deseada del giro
+            resetMiniIcosahedronsColor();// reset
+        }, 1000); // milisegundos
     }
 
     // Rotación del icosaedro basado en su velocidad de rotación
@@ -233,7 +224,7 @@ function animate() {
     icosahedron.rotation.y += icosahedron.userData.rotationSpeed.y;
     icosahedron.rotation.z += icosahedron.userData.rotationSpeed.z;
 
-    // Rotación de los icosahedros individuales
+    // Rotación individual de los mini icosahedros
     icosahedron.children.forEach(cube => {
         cube.rotation.x += cube.userData.rotationSpeed.x;
         cube.rotation.y += cube.userData.rotationSpeed.y;
@@ -259,7 +250,7 @@ renderer.domElement.addEventListener('mouseup', () => {
     isDragging = false;
 });
 
-// Evento para el arrastre en sí
+// Evento de arrastre
 renderer.domElement.addEventListener('mousemove', event => {
     if (!isDragging) return;
 
@@ -268,7 +259,7 @@ renderer.domElement.addEventListener('mousemove', event => {
         y: event.clientY - previousMousePosition.y
     };
 
-    const rotationSpeed = 0.005;
+    const rotationSpeed = 0.001; // velocidad de arrastre
 
     icosahedron.rotation.x += deltaMove.y * rotationSpeed;
     icosahedron.rotation.y += deltaMove.x * rotationSpeed;
@@ -313,31 +304,7 @@ renderer.domElement.addEventListener('touchmove', event => {
     event.preventDefault();
 });
 
-function copiarAlPortapapeles(idElemento) {
-    // Obtener el texto del elemento por su ID
-    const textoACopiar = document.getElementById(idElemento).innerText;
 
-    // Crear un input temporal para copiar el texto
-    const inputTemporal = document.createElement("input");
-    inputTemporal.value = textoACopiar;
-    document.body.appendChild(inputTemporal);
-
-    // Seleccionar y copiar el texto
-    inputTemporal.select();
-    document.execCommand("copy");
-
-    // Eliminar el input temporal
-    document.body.removeChild(inputTemporal);
-
-    // Cambiar el icono del botón
-    const btnCopy = document.querySelector('.btn-copy');
-    btnCopy.classList.add('copied');
-    
-    // Restaurar el icono después de unos segundos
-    setTimeout(() => {
-        btnCopy.classList.remove('copied');
-    }, 2000);
-}
 
 
 
