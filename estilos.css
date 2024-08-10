@@ -155,7 +155,7 @@ button:active {
     min-height: 100px;
     flex-direction: column;
     /* background-color: #121212; */
-    opacity: 0.9;
+    opacity: 0.99;
     /* border-top: 1px solid rgb(94, 94, 94); */
     /* border-bottom: 1px solid rgb(94, 94, 94); */
     margin-bottom: 50px;
@@ -183,6 +183,7 @@ button:active {
     flex-direction: column;
     /* gap: 24px; */
     position: relative;
+    opacity: 0.99;
 
 
 }
@@ -206,6 +207,7 @@ button:active {
     border-top: 1px solid rgb(94, 94, 94);
     opacity: 0.9;
     position: relative;
+    opacity: 0.99;
 }
 
 #seccion5 {
@@ -218,6 +220,7 @@ button:active {
     opacity: 0.9;
     /* border-top: 1px solid rgb(94, 94, 94);
     border-bottom: 1px solid rgb(94, 94, 94); */
+
 }
 
 #seccion6 {
@@ -229,9 +232,9 @@ button:active {
     /* background-color: #121212; */
     opacity: 0.9;
     /* padding: 5vh; */
-    margin: 16px;
+    /* margin: 16px; */
     /* overflow: hidden; */
-    /* padding: 64px; */
+    padding: 16px;
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
@@ -245,6 +248,8 @@ button:active {
     gap: 24px;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
+    
 }
 
 .tag-container {
@@ -287,7 +292,7 @@ button:active {
 }
 
 /* Estilos para el footer en dispositivos móviles */
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 600px) {
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -457,7 +462,7 @@ button:active {
     box-shadow: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     .tarjeta {
         flex: 1 1 100%;
         /* Cambia a 100% de ancho en pantallas pequeñas */
@@ -654,6 +659,26 @@ h5 {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+@media (max-width: 400px) {
+    .skill {
+        display: grid;
+        justify-items: stretch;
+        gap: 24px;
+        width: 240px;
+    }
+    .bloque-skills {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        /* max-width: 700px; */
+        /* min-width: 270px; */
+        flex-wrap: wrap;
+        align-content: space-between;
+        align-items: flex-start;
+        width: 240px;
+    }
 }
 
 .label {
