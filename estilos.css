@@ -531,6 +531,8 @@ h6 {
     line-height: 24px;
     /* min-width: 325px; */
     padding-left: 16px;
+    display: flex;
+    gap: 4px;
 }
 
 h7 {
