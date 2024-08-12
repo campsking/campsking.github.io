@@ -25,7 +25,8 @@ canvas {
     align-items: center;
     mix-blend-mode: difference;
     pointer-events: none;
-    border-bottom: 1px
+    border-bottom: 1px;
+    flex-direction: column;
 }
 
 .background-three {
@@ -530,6 +531,15 @@ h6 {
     line-height: 24px;
     /* min-width: 325px; */
     padding-left: 16px;
+}
+
+h7 {
+    color: #ff7b00;
+    font-size: 18px;
+    margin: 0;
+    line-height: 24px;
+    /* min-width: 325px; */
+    /* padding-left: 16px; */
 }
 
 .titulo {
