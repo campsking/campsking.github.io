@@ -1,21 +1,30 @@
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x121212);
 
-const camera = new THREE.PerspectiveCamera(35, window.innerWidth / (window.innerHeight * 1), 0.1, 1000);
+// Configura la niebla con color y distancias ajustadas
+const fogColor = new THREE.Color(0x121212); // Color de la niebla
+const fogNear = 10; // Distancia de inicio
+const fogFar = 35; // Distancia final
+
+scene.fog = new THREE.Fog(fogColor, fogNear, fogFar);
+
+// Configura la cámara
+const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 20;
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight * 1);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.toneMapping = THREE.ReinhardToneMapping;
 document.body.appendChild(renderer.domElement);
 
 // Manejador de eventos para ajustar el tamaño cuando se cambia el tamaño de la ventana
 window.addEventListener('resize', onWindowResize, false);
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / (window.innerHeight * 1);
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight * 1);
-
+    renderer.setSize(window.innerWidth, window.innerHeight);
     render();
 }
 
@@ -24,19 +33,25 @@ function render() {
     renderer.render(scene, camera);
 }
 
+
 // Escuchar el evento de redimensionamiento de la ventana y llamar a la función onWindowResize
 window.addEventListener('resize', onWindowResize, false);
 
+// Agrega una luz puntual en el centro de la escena
+const pointLight = new THREE.PointLight(0xFF7600, 100, 1000); // Color blanco, intensidad 1, distancia de 100
+pointLight.position.set(0, 0, 0); // Posición en el centro de la escena
+scene.add(pointLight);
+
 // Luz Ambiental y Direccional
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight.position.set(0, 1, 1);
 scene.add(directionalLight);
 
 // Icosaedro principal
 const icosahedronGeometry = new THREE.IcosahedronGeometry(9, 0);
-const icosahedronMaterial = new THREE.MeshBasicMaterial({ color: 0x1f1f1f, wireframe: true });
+const icosahedronMaterial = new THREE.MeshBasicMaterial({ color: 0x2f2f2f, wireframe: true});
 const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
 scene.add(icosahedron);
 
@@ -117,6 +132,7 @@ function onDocumentMouseDown(event) {
     }
 }
 
+
 /////////////////////////////////////////////////////////////////////////////////////
 
 // Función para seleccionar aleatoriamente un mini icosaedro y cambiar su color y tamaño temporalmente
@@ -134,10 +150,12 @@ function highlightRandomMiniIcosahedron() {
     const miniIcosahedron = availableMiniIcosahedrons[randomIndex];
 
     // Cambiar a (wireframe)
-    miniIcosahedron.material.wireframe = false;
+    miniIcosahedron.material.wireframe = true;
 
     // Cambiar el color a naranja
-    miniIcosahedron.material.color.set(0x6f6f6f);
+    miniIcosahedron.material.color.set(0xFF7601);
+    // miniIcosahedron.material.emissive.set(0xffffff);
+    miniIcosahedron.material.emissiveIntensity = 0.7;
     miniIcosahedron.userData.clicked = false; // bloquea mouse click
 
     // Reducir temporalmente el tamaño del mini icosaedro
