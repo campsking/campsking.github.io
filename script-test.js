@@ -9,7 +9,7 @@ const fogFar = 35; // Distancia final
 scene.fog = new THREE.Fog(fogColor, fogNear, fogFar);
 
 // Configura la cámara
-const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 20;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -38,8 +38,8 @@ function render() {
 window.addEventListener('resize', onWindowResize, false);
 
 // Agrega una luz puntual en el centro de la escena
-const pointLight = new THREE.PointLight(0xFF7600, 100, 1000); // Color blanco, intensidad 1, distancia de 100
-pointLight.position.set(0, 0, 0); // Posición en el centro de la escena
+const pointLight = new THREE.PointLight(0xFF7600, 10, 100); // Color blanco, intensidad 1, distancia de 100
+pointLight.position.set(0, 1, 11); // Posición en el centro de la escena
 scene.add(pointLight);
 
 // Luz Ambiental y Direccional
@@ -155,7 +155,7 @@ function highlightRandomMiniIcosahedron() {
     // Cambiar el color a naranja
     miniIcosahedron.material.color.set(0xFF7601);
     // miniIcosahedron.material.emissive.set(0xffffff);
-    miniIcosahedron.material.emissiveIntensity = 0.7;
+    // miniIcosahedron.material.emissiveIntensity = 20;
     miniIcosahedron.userData.clicked = false; // bloquea mouse click
 
     // Reducir temporalmente el tamaño del mini icosaedro
