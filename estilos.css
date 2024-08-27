@@ -49,6 +49,7 @@ canvas {
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    margin-bottom: 8px;
 }
 
 .btn-download:hover {
@@ -156,6 +157,7 @@ canvas {
     /* border-top: 1px solid rgb(94, 94, 94); */
     /* border-bottom: 1px solid rgb(94, 94, 94); */
     margin-bottom: 50px;
+    padding: 16px;
 }
 
 #seccion1 .contenido {
@@ -166,7 +168,7 @@ canvas {
     gap: 16px;
     /* overflow-y: auto;
     overflow-x: hidden; */
-    margin: 8px;
+    /* margin: 8px; */
 }
 
 .cv-content {
@@ -220,11 +222,12 @@ canvas {
 
 .cv-top {
     display: flex;
-    min-width: 300px;
+    /* min-width: 300px; */
     gap: 24px;
     flex-wrap: wrap;
     /* max-width: 90%; */
     max-width: 1424PX;
+    justify-content: space-evenly;
 }
 
 .cv-top-label {
@@ -233,6 +236,7 @@ canvas {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    
 }
 
 /* ___________________________SECCION Galeria_____________________________ */
@@ -337,12 +341,12 @@ canvas {
     /* padding: 5vh; */
     /* margin: 16px; */
     /* overflow: hidden; */
-    padding: 16px;
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
     padding-bottom: 64px;
-    padding-top: 64px;
+    /* padding-top: 64px; */
+    padding: 16px;
 
 }
 
@@ -356,69 +360,78 @@ canvas {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
     flex-wrap: wrap;
     mix-blend-mode: difference;
     gap: 24px;
+    align-items: stretch;
+    max-width: 1470px;
 }
 
 /*              cards             */
 
 .card {
-    position: relative;
+    /* position: relative; */
     display: flex;
-    justify-content: center;
-    width: 320px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    /* width: 320px; */
+    /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); */
     padding: 24px;
     overflow: hidden;
     border-radius: 24px;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-    /* background: #2f2f2f; */
-    width: auto;
+    /* transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1); */
+    background: #202020;
+    /* width: auto; */
     max-width: 300px;
-    min-width: 280px;
-    transition: all 0.5s ease;
-    height: 340px;
-    align-items: stretch;
+    min-width: 210px;
+    /* transition: all 0.5s ease; */
+    /* height: 340px; */
+    /* flex-wrap: nowrap; */
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 24px;
+    justify-content: space-between;
 
 }
 
 .content {
     display: flex;
+    gap: 24px;
+    color: #ffffff;
+    /* transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1); */
+    /* width: auto; */
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
-    color: #ffffff;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-    width: auto;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .content .heading {
     display: flex;
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 32px;
     width: fit-content;
     line-height: 36px;
-    min-height: 80px;
+    min-height: 50px;
     align-items: flex-end;
+    font-size: 28px;
+    color: #7b7b7b;
+    line-height: 28px
+}
+
+.content .cardtext {
+    display: flex;
+    /* font-weight: 700; */
+    /* font-size: 32px; */
+    /* width: fit-content; */
+    /* line-height: 36px; */
+    /* min-height: 80px; */
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 24px;
 }
 
 .content .para {
     line-height: 1.5;
-}
 
-.card::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0px;
-    height: 100%;
-    background: linear-gradient(-450deg, #2f2f2f 0%, #313131 100%);
-    z-index: -1;
-    transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .card:hover::before {
