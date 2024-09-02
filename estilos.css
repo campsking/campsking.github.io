@@ -281,7 +281,7 @@ ul {
     list-style-type: none;
     /* Elimina los marcadores predeterminados */
     display: flex;
-    height: 400px;
+    height: 500px;
     gap: 16px;
     overflow-y: hidden;
     overflow-x: auto;

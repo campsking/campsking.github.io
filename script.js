@@ -9,23 +9,6 @@ document.querySelectorAll('.galeria-lista').forEach(galeria => {
     let startX;
     let scrollLeft;
 
-    // Evento para desplazamiento con la rueda del ratón en la galería
-    galeria.addEventListener('wheel', (e) => {
-        // Calcular la posición máxima de desplazamiento horizontal
-        const maxScrollLeft = galeria.scrollWidth - galeria.clientWidth;
-
-        // Comprobar si la galería está al principio o al final de su desplazamiento horizontal
-        if ((galeria.scrollLeft === 0 && e.deltaY < 0) || (galeria.scrollLeft === maxScrollLeft && e.deltaY > 0)) {
-            // No hacer nada si la galería está en uno de sus extremos
-            return;
-        }
-
-        // Prevenir el desplazamiento vertical predeterminado y desplazar horizontalmente
-        e.preventDefault();
-        const desplazamiento = e.deltaY * 0.5; // Ajustar según sea necesario
-        galeria.scrollLeft += desplazamiento;
-    });
-
     galeria.addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.pageX - galeria.offsetLeft; // Guarda la posición inicial del mouse
