@@ -1,4 +1,5 @@
-html,body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -16,10 +17,10 @@ canvas {
     position: fixed;
 }
 
-ul {
+/* ul {
     padding: 0;
     margin: 0;
-}
+} */
 
 .cabecera {
     height: 70vh;
@@ -271,12 +272,14 @@ ul {
 
 }
 
-.galeria-lista, .galeria-lista * {
+.galeria-lista,
+.galeria-lista * {
     cursor: grab;
 }
 
 .galeria-lista {
-    z-index: 2; /* Asegúrate de que esté por encima del canvas */
+    z-index: 2;
+    /* Asegúrate de que esté por encima del canvas */
     position: relative;
     list-style-type: none;
     /* Elimina los marcadores predeterminados */
@@ -566,7 +569,7 @@ ul {
     min-height: 100px;
     flex-direction: row;
     opacity: 0.9;
-    padding: 16px;
+    /* padding: 16px; */
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
@@ -581,7 +584,35 @@ ul {
     gap: 24px;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
+    max-width: 1470px;
+    margin: 16px;
+    justify-content: space-around;
+    width: -webkit-fill-available;
+}
+
+.cv-content_skills2 {
+    display: flex;
+    gap: 68px;
+    padding: 24px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: auto;
+    max-width: 990px;
+    border-radius: 24px;
+    background: #202020;
+}
+
+.cv-content_skills3 {
+        /* display: flex; */
+    /* gap: 68px; */
+    padding: 24px;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    /* width: auto; */
+    /* max-width: 1020px; */
+    border-radius: 24px;
+    background: #202020;
+    /* width: -webkit-fill-available; */
 }
 
 .barra-progreso {
@@ -632,6 +663,9 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    /* min-width: 400px; */
+    width: -webkit-fill-available;
+    max-width: 400px;
 }
 
 .skill {
@@ -644,14 +678,12 @@ ul {
 }
 
 .bloque-skills {
-    display: flex;
-    flex-direction: column;
+
     gap: 26px;
-    /* max-width: 700px; */
-    /* min-width: 270px; */
     flex-wrap: wrap;
-    align-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    justify-items: stretch;
+    /* width: -webkit-fill-available; */
 }
 
 .grupo-tag-lebel {
@@ -697,7 +729,7 @@ ul {
         flex-wrap: wrap;
         align-content: space-between;
         align-items: flex-start;
-        width: 240px;
+        /* width: 240px; */
     }
 }
 
@@ -878,9 +910,9 @@ h5 {
 .grupo-tag {
     display: flex;
     gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
     justify-content: flex-start;
 }
 
