@@ -70,9 +70,11 @@ icosahedron.userData.rotationSpeed = new THREE.Vector3(
 );
 
 const positionAttribute = icosahedronGeometry.attributes.position;
-// Usar una variable diferente para la geometría del mini icosaedro
-const miniIcosahedronGeometry = new THREE.IcosahedronGeometry(0.7, 0); // Definir la geometría del icosaedro
-const createdPositions = []; // Almacenar las posiciones creadas
+const miniIcosahedronGeometry = new THREE.IcosahedronGeometry(0.7, 0);
+const miniIcosahedronMaterial = new THREE.MeshStandardMaterial({
+  color: 0x1f1f1f,
+});
+const createdPositions = [];
 
 for (let i = 0; i < positionAttribute.count; i++) {
   const vertex = new THREE.Vector3();
@@ -167,7 +169,8 @@ function shakeIcosahedron() {
 
     if (elapsed < shakeDuration) {
       // Calcular el factor de tambaleo (interpolación suave para detener el movimiento)
-      let shakeFactor = Math.sin((elapsed / shakeDuration) * Math.PI * 4) * shakeAmount;
+      let shakeFactor =
+        Math.sin((elapsed / shakeDuration) * Math.PI * 4) * shakeAmount;
 
       // Aplicar un pequeño desplazamiento de rotación para el tambaleo
       icosahedron.rotation.x += shakeFactor;
@@ -186,7 +189,6 @@ function shakeIcosahedron() {
 
   requestAnimationFrame(shakeAnimation); // Iniciar la animación del tambaleo
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -216,13 +218,7 @@ function highlightRandomMiniIcosahedron() {
 
   // Cambiar el color a naranja
   miniIcosahedron.material.color.set(0xff7601);
-  // miniIcosahedron.material.emissive.set(0xffffff);
-  // miniIcosahedron.material.emissiveIntensity = 20;
   miniIcosahedron.userData.clicked = false; // bloquea mouse click
-
-  // Reducir temporalmente el tamaño del mini icosaedro
-  //const originalScale = miniIcosahedron.scale.clone();
-  //miniIcosahedron.scale.multiplyScalar(1); // Reducir el tamaño a un 80%
 
   // temporizador para restaurar el color original, el tamaño y la representación
   setTimeout(() => {
@@ -274,6 +270,9 @@ let isAnimating = false;
 let rotationSpeed = { x: 0.0005, y: 0.0005 }; // Velocidad normal de rotación
 let maxRotationSpeed = { x: 0.1, y: 0.1 }; // Velocidad máxima para la animación rápida
 
+let frame = 0;
+const framesToSkip = 3; // Ajusta esto para reducir la frecuencia de actualización
+
 // Función de animación
 function animate() {
   requestAnimationFrame(animate);
@@ -293,7 +292,6 @@ function animate() {
 
   // Comprobar si todos los mini icosaedros son balncos
   if (allIcosahedronsAreWhite()) {
-    // time out giro blanco
     setTimeout(() => {
       resetMiniIcosahedronsColor(); // reset
     }, 1000); // milisegundos
@@ -390,12 +388,18 @@ renderer.domElement.addEventListener("touchmove", (event) => {
   event.preventDefault();
 });
 
+window.addEventListener('scroll', function(e) {
+  // Código de manejo de scroll
+}, { passive: true });
+
 // Función para manejar los toques "tap" en dispositivos móviles
 function handleTouchTap(event) {
   event.preventDefault();
 
   // Usar el primer toque (solo un dedo)
   const touch = event.touches[0];
+
+  
 
   // Calcular la posición del toque en coordenadas normalizadas (-1 a +1)
   mouse.x = (touch.clientX / renderer.domElement.clientWidth) * 2 - 1;
@@ -434,4 +438,3 @@ function handleTouchTap(event) {
     }
   }
 }
-

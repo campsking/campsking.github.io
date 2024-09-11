@@ -1,8 +1,6 @@
 let secciones = document.querySelectorAll(".seccion");
 let indiceSeccionActual = 0;
-let startX,
-  startY,
-  isDragging = false;
+let startX, startY, isDragging = false;
 const umbralVertical = 50; // Ajusta este valor para controlar la sensibilidad del desplazamiento vertical
 
 // Selecciona todas las galerías
@@ -69,5 +67,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   iframes.forEach((iframe) => {
     observer.observe(iframe);
+  });
+
+  // Añadir la lógica para cambiar las imágenes de la galería según el dispositivo
+  const screenWidth = window.innerWidth;
+  const images = document.querySelectorAll('.elemento-galeria img');
+
+  // Definir las rutas de las carpetas
+  const folderPC = 'galeria_pic_pc/';
+  const folderMobile = 'galeria_pic/';
+
+  // Determinar qué carpeta usar según el ancho de pantalla
+  const folder = screenWidth <= 768 ? folderMobile : folderPC;
+
+  // Cambiar la ruta de cada imagen
+  images.forEach((img) => {
+    const src = img.getAttribute('data-src'); // Obtener el nombre de la imagen
+    img.src = folder + src; // Actualizar el src con la carpeta correspondiente
   });
 });
