@@ -31,16 +31,15 @@ canvas {
 .background-three {
   position: absolute;
 }
-
 /* ________________________________________BTN______________________________________________ */
 
 .btn-download {
-  padding: 12px 30px;
+  padding: 10px 24px;
   border-radius: 16px;
   border: 0;
   background-color: #ff7b00;
   font-size: 16px;
-  font-weight: bolder;
+  font-weight: bold;
   transition: all 0.3s ease;
   box-shadow: #c45f00 0px 7px 0px 0px;
   color: #121212;
@@ -93,11 +92,10 @@ canvas {
 }
 
 .texto-copiable {
-  color: #888;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .texto-copiable a {
@@ -189,7 +187,6 @@ canvas {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: nowrap;
-  mix-blend-mode: difference;
 }
 
 .cv-content_skills {
@@ -206,10 +203,8 @@ canvas {
 
 .cv-top {
   display: flex;
-  /* min-width: 300px; */
   gap: 24px;
   flex-wrap: wrap;
-  /* max-width: 90%; */
   max-width: 1424px;
   justify-content: space-evenly;
 }
@@ -234,6 +229,8 @@ canvas {
   opacity: 0.99;
   margin-bottom: 50px;
   padding: 16px;
+  gap: 48px
+  
 }
 
 .seccion2 {
@@ -288,6 +285,15 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 0px;
   unicode-bidi: isolate;
+}
+
+.galeria-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+
+  max-width: 1470px;
 }
 
 .galeria {
@@ -424,12 +430,12 @@ ul {
 }
 
 .card .btn-download {
-  padding: 12px 30px;
+  padding: 12px 24px;
   border-radius: 16px;
   border: 0;
   background-color: #2f2f2f;
   font-size: 16px;
-  font-weight: bolder;
+  font-weight: bold;
   transition: all 0.3s ease;
   box-shadow: #272727 0px 7px 0px 0px;
   color: #ffffff;
@@ -703,6 +709,16 @@ ul {
   font-size: 18px;
   margin: 0;
   line-height: 24px;
+  
+}
+
+.subtitle-text-brand2 {
+  color: #ff7b00;
+  font-size: 18px;
+  margin: 0;
+  line-height: 24px;
+  mix-blend-mode: difference;
+  
 }
 
 .title-text-brand {
@@ -727,12 +743,10 @@ ul {
   align-items: flex-start;
   flex-wrap: nowrap;
   margin-top: 50px;
-  mix-blend-mode: difference;
   margin: 16px;
 }
 
 /* ______________________estilos generales_____________________________ */
-
 
 p {
   color: #888;
@@ -754,6 +768,9 @@ p {
   padding-right: 16px;
   border-radius: 16px;
   color: #9c9c9c;
+  height: 32px;
+  max-height: 32px;
+  gap: 16px;
 }
 
 .grupo-tag {
@@ -763,4 +780,3 @@ p {
   flex-direction: column;
   justify-content: flex-start;
 }
-
