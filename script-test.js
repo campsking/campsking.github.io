@@ -127,25 +127,66 @@ function onDocumentMouseDown(event) {
   // Calcular objetos intersectados
   const intersects = raycaster.intersectObjects(icosahedron.children);
 
-  // Cambiar el color del primer objeto intersectado
   if (intersects.length > 0) {
     const object = intersects[0].object;
-    if (
-      object.material.color.getHex() === 0xffffff &&
-      !object.material.wireframe
-    ) {
-      object.material.color.set(0xff7600); // Cambiar a naranja
-    } else if (object.material.color.getHex() === 0x1f1f1f) {
-      if (!object.userData.clicked) {
-        object.material.color.set(0xff7600); // Cambiar a blanco
-        object.userData.clicked = true;
-      } else {
-        object.material.color.set(0xff7600); // Cambiar a naranja oscuro
-        object.userData.clicked = false;
+
+    // Verificar si el mini icosaedro está en modo wireframe
+    if (object.material.wireframe === true) {
+      // Si el mini icosaedro está en wireframe, reiniciar todos los mini icosaedros
+      resetMiniIcosahedronsColor();
+
+      // Cambiar el color del icosaedro principal a rojo
+      icosahedron.material.color.set(0xff0000);
+
+      // Iniciar el efecto de tambaleo
+      shakeIcosahedron();
+    } else {
+      // Lógica normal de cambio de color si no está en wireframe
+      if (object.material.color.getHex() === 0x1f1f1f) {
+        if (!object.userData.clicked) {
+          object.material.color.set(0xff7600); // Cambiar a naranja
+          object.userData.clicked = true;
+        } else {
+          object.material.color.set(0x1f1f1f); // Restaurar a su color original
+          object.userData.clicked = false;
+        }
       }
     }
   }
 }
+
+// Función para crear el efecto de tambaleo
+function shakeIcosahedron() {
+  let shakeDuration = 500; // Duración total del tambaleo en milisegundos
+  let shakeAmount = 0.05; // Cantidad de rotación en radianes
+
+  let startTime = performance.now();
+
+  function shakeAnimation(currentTime) {
+    let elapsed = currentTime - startTime;
+
+    if (elapsed < shakeDuration) {
+      // Calcular el factor de tambaleo (interpolación suave para detener el movimiento)
+      let shakeFactor = Math.sin((elapsed / shakeDuration) * Math.PI * 4) * shakeAmount;
+
+      // Aplicar un pequeño desplazamiento de rotación para el tambaleo
+      icosahedron.rotation.x += shakeFactor;
+      icosahedron.rotation.y += shakeFactor;
+
+      requestAnimationFrame(shakeAnimation); // Continuar la animación
+    } else {
+      // Restablecer la rotación del icosaedro principal
+      icosahedron.rotation.x = 0;
+      icosahedron.rotation.y = 0;
+
+      // Volver el color del icosaedro principal a su color original (gris oscuro)
+      icosahedron.material.color.set(0x2f2f2f);
+    }
+  }
+
+  requestAnimationFrame(shakeAnimation); // Iniciar la animación del tambaleo
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 
