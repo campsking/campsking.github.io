@@ -52,3 +52,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let iframes = document.querySelectorAll('iframe[data-src]');
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let iframe = entry.target;
+                iframe.src = iframe.getAttribute('data-src');
+                observer.unobserve(iframe);
+            }
+        });
+    });
+
+    iframes.forEach(iframe => {
+        observer.observe(iframe);
+    });
+});
+
