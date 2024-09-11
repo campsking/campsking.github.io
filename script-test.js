@@ -350,13 +350,18 @@ renderer.domElement.addEventListener("mousemove", (event) => {
   };
 });
 
-// Eventos táctiles para dispositivos móviles
+// Evento para iniciar el arrastre en dispositivos móviles
 renderer.domElement.addEventListener("touchstart", (event) => {
   isDragging = true;
   previousMousePosition = {
     x: event.touches[0].clientX,
     y: event.touches[0].clientY,
   };
+
+  // Verificar si se trata de un toque en lugar de un arrastre
+  if (event.touches.length === 1) {
+    handleTouchTap(event); // Manejar el toque
+  }
 });
 
 renderer.domElement.addEventListener("touchend", () => {
@@ -380,6 +385,53 @@ renderer.domElement.addEventListener("touchmove", (event) => {
     x: event.touches[0].clientX,
     y: event.touches[0].clientY,
   };
+
   // Evitar la recarga de la página al hacer drag hacia abajo
   event.preventDefault();
 });
+
+// Función para manejar los toques "tap" en dispositivos móviles
+function handleTouchTap(event) {
+  event.preventDefault();
+
+  // Usar el primer toque (solo un dedo)
+  const touch = event.touches[0];
+
+  // Calcular la posición del toque en coordenadas normalizadas (-1 a +1)
+  mouse.x = (touch.clientX / renderer.domElement.clientWidth) * 2 - 1;
+  mouse.y = -(touch.clientY / renderer.domElement.clientHeight) * 2 + 1;
+
+  // Actualizar el raycaster con la posición del toque
+  raycaster.setFromCamera(mouse, camera);
+
+  // Calcular objetos intersectados
+  const intersects = raycaster.intersectObjects(icosahedron.children);
+
+  if (intersects.length > 0) {
+    const object = intersects[0].object;
+
+    // Verificar si el mini icosaedro está en modo wireframe
+    if (object.material.wireframe === true) {
+      // Si el mini icosaedro está en wireframe, reiniciar todos los mini icosaedros
+      resetMiniIcosahedronsColor();
+
+      // Cambiar el color del icosaedro principal a rojo
+      icosahedron.material.color.set(0xff0000);
+
+      // Iniciar el efecto de tambaleo
+      shakeIcosahedron();
+    } else {
+      // Lógica normal de cambio de color si no está en wireframe
+      if (object.material.color.getHex() === 0x1f1f1f) {
+        if (!object.userData.clicked) {
+          object.material.color.set(0xff7600); // Cambiar a naranja
+          object.userData.clicked = true;
+        } else {
+          object.material.color.set(0x1f1f1f); // Restaurar a su color original
+          object.userData.clicked = false;
+        }
+      }
+    }
+  }
+}
+
