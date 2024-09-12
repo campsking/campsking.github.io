@@ -42,7 +42,7 @@ function render() {
 window.addEventListener("resize", onWindowResize, false);
 
 // Agrega una luz puntual en el centro de la escena
-const pointLight = new THREE.PointLight(0xff7600, 10, 10000); // Color blanco, intensidad 1, distancia de 100
+const pointLight = new THREE.PointLight(0xffffff, 5, 10); // Color blanco, intensidad 1, distancia de 100
 pointLight.position.set(0, 1, 11); // Posición en el centro de la escena
 scene.add(pointLight);
 
@@ -138,7 +138,7 @@ function onDocumentMouseDown(event) {
       resetMiniIcosahedronsColor();
 
       // Cambiar el color del icosaedro principal a rojo
-      icosahedron.material.color.set(0xff0000);
+      icosahedron.material.color.set(0xff4000);
 
       // Iniciar el efecto de tambaleo
       shakeIcosahedron();
@@ -146,7 +146,7 @@ function onDocumentMouseDown(event) {
       // Lógica normal de cambio de color si no está en wireframe
       if (object.material.color.getHex() === 0x1f1f1f) {
         if (!object.userData.clicked) {
-          object.material.color.set(0xff7600); // Cambiar a naranja
+          object.material.color.set(0xff4000); // Cambiar a naranja
           object.userData.clicked = true;
         } else {
           object.material.color.set(0x1f1f1f); // Restaurar a su color original
@@ -217,7 +217,7 @@ function highlightRandomMiniIcosahedron() {
   miniIcosahedron.material.wireframe = true;
 
   // Cambiar el color a naranja
-  miniIcosahedron.material.color.set(0xff7601);
+  miniIcosahedron.material.color.set(0xff3000);
   miniIcosahedron.userData.clicked = false; // bloquea mouse click
 
   // temporizador para restaurar el color original, el tamaño y la representación
@@ -236,7 +236,7 @@ setInterval(highlightRandomMiniIcosahedron, 3000); // milisegundos
 // Función para comprobar si todos los mini icosaedros son naranjas
 function allIcosahedronsAreOrange() {
   return icosahedron.children.every((miniIcosahedron) =>
-    miniIcosahedron.material.color.equals(new THREE.Color(0xff7600))
+    miniIcosahedron.material.color.equals(new THREE.Color(0xff4000))
   );
 }
 // Función para comprobar si todos los mini icosaedros son blancos
