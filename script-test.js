@@ -428,7 +428,7 @@ function handleTouchTap(event) {
       // Lógica normal de cambio de color si no está en wireframe
       if (object.material.color.getHex() === 0x1f1f1f) {
         if (!object.userData.clicked) {
-          object.material.color.set(0xff7600); // Cambiar a naranja
+          object.material.color.set(0xff4000); // Cambiar a naranja
           object.userData.clicked = true;
         } else {
           object.material.color.set(0x1f1f1f); // Restaurar a su color original
