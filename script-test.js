@@ -420,7 +420,7 @@ function handleTouchTap(event) {
       resetMiniIcosahedronsColor();
 
       // Cambiar el color del icosaedro principal a rojo
-      icosahedron.material.color.set(0xff0000);
+      icosahedron.material.color.set(0xff3000);
 
       // Iniciar el efecto de tambaleo
       shakeIcosahedron();
