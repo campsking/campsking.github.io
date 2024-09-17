@@ -746,14 +746,17 @@ grid-template-columns:1fr 1fr;
 
 .tag {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  background-color: #1b1b1b;
-  padding: 8px 16px 8px 16px;
-  border-radius: 16px;
-  color: #9c9c9c;
-  align-items: center;
-  justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: #1b1b1b;
+    padding: 8px 16px 8px 16px;
+    border-radius: 16px;
+    color: #9c9c9c;
+    justify-content: flex-start;
+    align-content: stretch;
+    min-height: 32px;
+    align-items: center;
+    gap: 16px;
 }
 
 
