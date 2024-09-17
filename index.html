@@ -5,15 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" as="style"
+        onload="this.rel='stylesheet'">
     <link rel="icon" href="svg/Ficon.svg" type="image/svg+xml">
     <!-- Carga Three.js desde el CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <title>cmillan.uiux</title>
-    <meta name="description" content="Portfolio profesional de UI/UX con ejemplos de diseño, proyectos destacados y servicios de consultoría en experiencia de usuario.">
+    <meta name="description"
+        content="Portfolio profesional de UI/UX con ejemplos de diseño, proyectos destacados y servicios de consultoría en experiencia de usuario.">
 </head>
 
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img class="icon_navbar" src="svg/Ficon.svg" alt="icono" />
+            </div>
+            <div class="menu-icon" id="menuIcon">
+                &#9776;
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Portafolio</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
     <!-- THREE -->
     <div class="background-three">
         <script src="script-test.js"></script>
@@ -22,144 +40,151 @@
 
     <div class="cabecera">
         <div class="cabecera">
-        <img src="svg/LogoWeb_compressed.svg" alt="icono">
-        <p class="subtitle">
-            Portafolio Digital.
-        </p>
+            <img src="svg/LogoWeb_compressed.svg" alt="icono">
+            <p class="subtitle">
+                Portafolio Digital.
+            </p>
         </div>
-        <p class="tag-container">Evita tocar el <img class="icono" src="svg/TablerIkosaedr_orange.svg" alt="Ícono de un icosaedro naranja"></p>
-        </div>
+        <p class="tag-container">Evita tocar el <img class="icono" src="svg/TablerIkosaedr_orange.svg"
+                alt="Ícono de un icosaedro naranja"></p>
     </div>
 
-    <div class="contenido-principal">
-        <div id="contenedor">
-            <section id="seccion1" class="seccion activa">
-                <div class="contenido">
-                    <div class="cv-content">
-                        <div class="cv-top">
-                            <div class="titulo">
-                                <img src="perfil1.png" alt="foto">
-                                <div class="nombre">
-                                    <p class="title-text-brand">Carlos Millán</p>
-                                    <p class="subtitle-text-brand">Product Designer</p>
-                                </div>
-                                <div>
-                                    <p>Diseñador gráfico especializado en diseño de productos, con una sólida
-                                        experiencia en la industria farmacéutica, financiera, manufactura y tecnológica.
-                                        Mi enfoque se centra en fusionar estética y funcionalidad para crear
-                                        experiencias óptimas y atractivas. Apasionado por el avance tecnológico, me
-                                        sumerjo constantemente en ejercicios ideológicos para desarrollar nuevos
-                                        productos que aborden las necesidades y desafíos de la sociedad actual, siempre
-                                        buscando mejorar la vida de los usuarios.</p>
-                                </div>
+    <section id="seccion1" class="seccion activa">
+        <div class="contenido">
+            <div class="cv-content">
+                <div class="cv-top">
+                    <div class="titulo">
+                        <img src="perfil1.png" alt="foto">
+                        <div class="nombre">
+                            <p class="title-text-brand">Carlos Millán</p>
+                            <p><strong>Product Designer</strong></p>
+                        </div>
+                        <div>
+                            <article>Diseñador gráfico especializado en diseño de productos, con una sólida
+                                experiencia en la industria farmacéutica, financiera, manufactura y tecnológica.
+                                Mi enfoque se centra en fusionar estética y funcionalidad para crear
+                                experiencias óptimas y atractivas. Apasionado por el avance tecnológico, me
+                                sumerjo constantemente en ejercicios ideológicos para desarrollar nuevos
+                                productos que aborden las necesidades y desafíos de la sociedad actual, siempre
+                                buscando mejorar la vida de los usuarios.</article>
+                        </div>
+                    </div>
+                    <div class="cv-top-label">
+                        <a href="https://drive.google.com/file/d/1hTet9tJ0YHoV3RKZoOAz5dFq4Vedlxyo/view?usp=sharing"
+                            target="_blank" rel="noopener">
+                            <button class="btn-download">
+                                Descargar CV
+                            </button>
+                        </a>
+                        <div class="label">
+                            <div class="tag">
+                                <img src="svg/Group.svg" alt="Language icon">
+                                <p>Español / Inglés A2-B1</p>
                             </div>
-                            <div class="cv-top-label">
-                                <a href="https://drive.google.com/file/d/1hTet9tJ0YHoV3RKZoOAz5dFq4Vedlxyo/view?usp=sharing"
-                                    target="_blank" rel="noopener">
-                                    <button class="btn-download">
-                                        Descargar CV
-                                    </button>
-                                </a>
-                                <div class="label">
-                                    <div class="tag">
-                                        <img src="svg/Group.svg" alt="Language icon">
-                                        <p>Español / Inglés A2-B1</p>
-                                    </div>
-                                </div>
-                                <div class="label">
-                                    <div class="tag">
-                                        <img src="svg/Group-1.svg" alt="Location icon">
-                                        <p>Caracas, Venezuela</p>
-                                    </div>
-                                </div>
-                                <div class="label">
-                                    <div class="tag">
-                                    <div class="texto-copiable" id="textoACopiar">
-                                        <img src="svg/JamWhatsapp.svg" alt="WhatsApp icon">
-                                        <a href="https://wa.me/+584142348028?text=Hola,%20me%20interesa%20tu%20producto"
-                                           class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                                            +58 414 2348028
-                                        </a>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="tag">
-                                    <img src="svg/SkillIconsGmailDark.svg" alt="Email icon">
-                                    <p>
-                                        <a href="mailto:cmillan.uiux@gmail.com?subject=Solicitud de Presupuesto&body=Descripción del presupuesto"
-                                           class="btn-email">
-                                            cmillan.uiux@gmail.com
-                                        </a>
-                                    </p>
-                                </div>
-                                <div class="tag">
-                                <div class="cv-top-label">
-                                        <img src="svg/JamLinkedinSquare.svg" alt="icono">
-                                    </div>
-                                    <p>
-                                        <a href="https://www.linkedin.com/in/cmillan-design/" class="btn-email"
-                                            target="_blank" rel="noopener noreferrer">
-                                            linkedin.com/in/cmillan-design/</a>
-                                    </p>
+                        </div>
+                        <div class="label">
+                            <div class="tag">
+                                <img src="svg/Group-1.svg" alt="Location icon">
+                                <p>Caracas, Venezuela</p>
+                            </div>
+                        </div>
+                        <div class="label">
+                            <div class="tag">
+                                <div class="texto-copiable" id="textoACopiar">
+                                    <img src="svg/JamWhatsapp.svg" alt="WhatsApp icon">
+                                    <a href="https://wa.me/+584142348028?text=Hola,%20me%20interesa%20tu%20producto"
+                                        class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                                        +58 414 2348028
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        <div class="tag">
+                            <img src="svg/SkillIconsGmailDark.svg" alt="Email icon">
+                            <p>
+                                <a href="mailto:cmillan.uiux@gmail.com?subject=Solicitud de Presupuesto&body=Descripción del presupuesto"
+                                    class="btn-email">
+                                    cmillan.uiux@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                        <div class="tag">
+                            <div class="cv-top-label">
+                                <img src="svg/JamLinkedinSquare.svg" alt="icono">
+                            </div>
+                            <p>
+                                <a href="https://www.linkedin.com/in/cmillan-design/" class="btn-email" target="_blank"
+                                    rel="noopener noreferrer">
+                                    linkedin.com/in/cmillan-design/</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-
     </section>
+
     <section id="seccion2" class="seccion">
         <div class="nombre-seccion-cards">
             <div class="card">
                 <div class="content">
                     <p class="heading">Diseño (UI)</p>
-                    <p class="para">
-                        Especializado en la creación de interfaces intuitivas y visualmente atractivas que mejoran la experiencia del usuario y refuerzan la identidad de tu marca. Mi enfoque se centra en la simplicidad, la usabilidad y la coherencia visual, asegurando que cada interacción sea fluida y agradable.
-                    </p>
+                    <article>
+                        Especializado en la creación de interfaces intuitivas y visualmente atractivas que mejoran
+                        la experiencia del usuario y refuerzan la identidad de tu marca. Mi enfoque se centra en la
+                        simplicidad, la usabilidad y la coherencia visual, asegurando que cada interacción sea
+                        fluida y agradable.
+                    </article>
                 </div>
-                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver Proyectos</a>
+                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver
+                    Proyectos</a>
             </div>
             <div class="card">
                 <div class="content">
                     <p class="heading">Diseño (UX)</p>
-                    <p class="para">
-                        Desarrollo soluciones centradas en el usuario, utilizando investigación y pruebas continuas para garantizar que los productos resuelvan problemas reales y ofrezcan una experiencia satisfactoria. Mi objetivo es diseñar experiencias que conecten emocionalmente con los usuarios y sean eficaces en su propósito.
-                    </p>
+                    <article>
+                        Desarrollo soluciones centradas en el usuario, utilizando investigación y pruebas continuas
+                        para garantizar que los productos resuelvan problemas reales y ofrezcan una experiencia
+                        satisfactoria. Mi objetivo es diseñar experiencias que conecten emocionalmente con los
+                        usuarios y sean eficaces en su propósito.
+                    </article>
                 </div>
-                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver Proyectos</a>
+                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver
+                    Proyectos</a>
             </div>
             <div class="card">
                 <div class="content">
                     <p class="heading">Diseño de Producto</p>
-                    <p class="para">
-                        Desde la conceptualización hasta la entrega final, diseño productos que satisfacen las necesidades del usuario y los objetivos del negocio. Mi enfoque se basa en la funcionalidad, la estética y la usabilidad, asegurando que cada producto sea práctico y visualmente atractivo.
-                    </p>
+                    <article>
+                        Desde la conceptualización hasta la entrega final, diseño productos que satisfacen las
+                        necesidades del usuario y los objetivos del negocio. Mi enfoque se basa en la funcionalidad,
+                        la estética y la usabilidad, asegurando que cada producto sea práctico y visualmente
+                        atractivo.
+                    </article>
                 </div>
-                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver Proyectos</a>
+                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver
+                    Proyectos</a>
             </div>
             <div class="card">
                 <div class="content">
                     <p class="heading">Creatividad</p>
-                    <p class="para">
-                        Ofrezco servicios de consultoría en la aplicación de tecnologías a productos para desarrollo funcional. La creatividad y la innovación ayudarán a diferenciar el producto en el mercado, asegurando que sean memorables y disruptivos.
-                    </p>
+                    <article>
+                        Ofrezco servicios de consultoría en la aplicación de tecnologías a productos para desarrollo
+                        funcional. La creatividad y la innovación ayudarán a diferenciar el producto en el mercado,
+                        asegurando que sean memorables y disruptivos.
+                    </article>
                 </div>
-                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver Proyectos</a>
+                <a href="https://cmillanp.github.io/colorthree_web/" class="btn-download" target="_blank">Ver
+                    Proyectos</a>
             </div>
     </section>
 
-    <!------------------------------------------------------------------------ -->
-
     <section id="seccion-galeria" class="seccion">
-        </div>
-        <!-- Primera Galería -->
         <div class="galeria">
             <div class="galeria-title">
-            <p class="title-text-brand">Empaques / 3D Packaging</p>
-            <p class="subtitle">Renders</p>
-        </div>
+                <p class="title-text-brand">Empaques / 3D Packaging</p>
+                <p class="subtitle">Renders</p>
+            </div>
             <ul class="galeria-lista">
                 <li class="elemento-galeria">
                     <img data-src="packagin_1.png" alt="Imagen 1" loading="lazy">
@@ -194,11 +219,10 @@
             </ul>
         </div>
 
-        <!-- Segunda Galería -->
         <div class="galeria">
             <div class="galeria-title">
-            <p class="title-text-brand">Logotipos</p>
-        </div>
+                <p class="title-text-brand">Logotipos</p>
+            </div>
             <ul class="galeria-lista">
                 <li class="elemento-galeria">
                     <img data-src="Logos-01.jpg" alt="Imagen 3" loading="lazy">
@@ -255,14 +279,12 @@
             </ul>
         </div>
     </section>
-    <!-- ---------------------------------------------------------------------- -->
 
     <section id="seccion3" class="seccion">
         <div class="nombre-seccion">
             <p class="title-text-brand">Figma ( Prototipos funcionales )</p>
             <p class="subtitle">Presiona [R] para reiniciar prototipo</p>
         </div>
-
         <div class="protitpos-figma">
             <div id="prototipo" class="prototipo">
                 <iframe
@@ -288,13 +310,11 @@
         </div>
     </section>
 
-    <!-- ------------------------------------------------------------------------------------- -->
-
     <section id="seccion6">
         <div class="contenido_seccion6">
             <div class="cv-content_skills2">
-                <div class="bloque-skills">
-                    <p class="title-text-brand">Habilidades y Herramientas</p>
+                <!-- <p class="title-text-brand">Habilidades y Herramientas</p> -->
+                <div class="bloque-skills_1">
                     <div class="grupo-tag">
                         <div class="grupo-tag-lebel">
                             <img src="svg/design.svg" alt="icono">
@@ -305,21 +325,6 @@
                             <span class="tag">Color Theory</span>
                             <span class="tag">Responsive UI</span>
                             <span class="tag">Design Systems</span>
-                        </div>
-                    </div>
-                    <div class="grupo-tag">
-                        <div class="grupo-tag-lebel">
-                            <img src="svg/ux.svg" alt="icono">
-                            <p class="title-medium-text-brand">UX</p>
-                        </div>
-                        <div class="tag-container">
-                            <span class="tag">User Research</span>
-                            <span class="tag">A/B Testing</span>
-                            <span class="tag">Analysis</span>
-                            <span class="tag">Service Design</span>
-                            <span class="tag">Design Thinking</span>
-                            <span class="tag">Usability Testing</span>
-                            <span class="tag">Quality Assurance</span>
                         </div>
                     </div>
                     <div class="grupo-tag">
@@ -336,8 +341,23 @@
                     </div>
                     <div class="grupo-tag">
                         <div class="grupo-tag-lebel">
+                            <img src="svg/ia_icon.svg" alt="icono">
+                            <p class="title-medium-text-brand">UX</p>
+                        </div>
+                        <div class="tag-container">
+                            <span class="tag">User Research</span>
+                            <span class="tag">A/B Testing</span>
+                            <span class="tag">Analysis</span>
+                            <span class="tag">Service Design</span>
+                            <span class="tag">Design Thinking</span>
+                            <span class="tag">Usability Testing</span>
+                            <span class="tag">Quality Assurance</span>
+                        </div>
+                    </div>
+                    <div class="grupo-tag">
+                        <div class="grupo-tag-lebel">
                             <img src="svg/soft skills.svg" alt="icono">
-                            <p class="title-medium-text-brand" >Habilidades Blandas</p>
+                            <p class="title-medium-text-brand">Habilidades Blandas</p>
                         </div>
                         <div class="tag-container">
                             <span class="tag">Creatividad</span>
@@ -353,14 +373,13 @@
                 </div>
             </div>
 
-            <!-- ///////////////////////////////////////////////////////////////////////////// -->
             <div class="grupo-skills">
                 <div class="cv-content_skills3">
-                    <div class="bloque-skills">
-                        <div class="grupo-tag-lebel">
-                            <img src="svg/Software.svg" alt="icono">
-                            <p class="title-medium-text-brand">Software</p>
-                        </div>
+                    <div class="grupo-tag-lebel">
+                        <img src="svg/Software.svg" alt="icono">
+                        <p class="title-medium-text-brand">Software</p>
+                    </div>
+                    <div class="bloque-skills_2">
                         <div class="skill">
                             <p>Adobe Ps / Ai / Id</p>
                             <div class="barra-progreso">
@@ -413,11 +432,11 @@
                 </div>
 
                 <div class="cv-content_skills3">
-                    <div class="bloque-skills">
-                        <div class="grupo-tag-lebel">
-                            <img src="svg/Code.svg" alt="icono">
-                            <p class="title-medium-text-brand">Dev Skills</p>
-                        </div>
+                    <div class="grupo-tag-lebel">
+                        <img src="svg/Code.svg" alt="icono">
+                        <p class="title-medium-text-brand">Dev Skills</p>
+                    </div>
+                    <div class="bloque-skills_2">
                         <div class="skill">
                             <p>HTML / CSS</p>
                             <div class="barra-progreso">
@@ -447,8 +466,6 @@
             </div>
         </div>
     </section>
-
-    <!-- --------------------------------------------------------------------------------------------- -->
 
     </footer>
     <div class="footer">

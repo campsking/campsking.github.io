@@ -86,3 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
     img.src = folder + src; // Actualizar el src con la carpeta correspondiente
   });
 });
+
+// Seleccionamos los elementos
+const menuIcon = document.getElementById('menuIcon');
+const navLinks = document.getElementById('navLinks');
+
+// Función para alternar la clase 'active' en el menú
+menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
