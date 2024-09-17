@@ -43,6 +43,22 @@ strong {
   color: #ff7b00;
 }
 
+#animated-image {
+  animation: mover;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes mover {
+  from {
+    transform: rotatez(0deg);
+  }
+  to {
+    transform: rotatez(360deg);
+  }
+}
+
 /* ________________________________________Navbar______________________________________________ */
 
 header {
@@ -130,7 +146,7 @@ header {
   font-size: 16px;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: #c45f00 0px 7px 0px 0px;
+  box-shadow: #c45f00 -2px 7px 0px 0px;
   color: #121212;
   cursor: pointer;
   text-decoration: none;
@@ -140,8 +156,10 @@ header {
 }
 
 .btn-download:hover {
-  box-shadow: #9e4c00;
+  background-color: #ff7b00;
+  box-shadow: #c45f00 -2px 7px 0px 0px;
   color: #ffffff;
+  /* transform: rotateZ(-10deg); */
 }
 
 .btn-download:active {
@@ -292,7 +310,7 @@ header {
 }
 
 .cv-top {
-  display: flex;
+  display: grid;
   gap: 24px;
   flex-wrap: wrap;
   max-width: 1424px;
@@ -305,6 +323,7 @@ header {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  justify-items: stretch;
 }
 
 /* ___________________________SECCION Galeria_____________________________ */
@@ -316,7 +335,7 @@ header {
   min-height: 100px;
   flex-direction: column;
   background: #121212;
-  opacity: 0.90;
+  opacity: 0.9;
   /* margin-bottom: 50px; */
   padding: 16px;
   gap: 48px;
@@ -388,7 +407,7 @@ ul {
 .galeria {
   display: flex;
   gap: 16px;
-  transition: scroll-left 0.3s ease-out;
+  /* transition: scroll-left 0.3s ease-out; */
   max-width: 1463px;
   flex-direction: column;
 }
@@ -516,7 +535,7 @@ ul {
   background-color: #ff7b00;
   font-size: 16px;
   font-weight: bolder;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
   box-shadow: #c45f00 0px 7px 0px 0px;
   color: #ffffff;
   cursor: pointer;
@@ -558,7 +577,7 @@ ul {
   overflow: hidden;
   flex-direction: column;
   position: relative;
-  opacity: 0.90;
+  opacity: 0.9;
   padding-top: 64px;
   padding-bottom: 64px;
 }
@@ -615,11 +634,12 @@ ul {
   flex-wrap: wrap;
   border-radius: 24px;
   background: #202020;
+  min-width: fit-content;
 }
 
 .cv-content_skills2 {
   display: grid;
-  grid-template-columns:auto;
+  grid-template-columns: auto;
   gap: 16px;
   padding: 16px;
   flex-wrap: wrap;
@@ -639,7 +659,7 @@ ul {
 .relleno {
   background-color: #ff7b00;
   height: 100%;
-  transition: width 0.3s ease-in-out;
+  /* transition: width 0.3s ease-in-out; */
   border-radius: 4px;
 }
 
@@ -689,33 +709,33 @@ ul {
   gap: 8px;
   flex-direction: column;
   display: flex;
-  min-width:145px;
+  min-width: 150px;
 }
 
 .bloque-skills_1 {
-    gap: 16px;
+  gap: 16px;
   flex-wrap: wrap;
   display: grid;
   justify-items: stretch;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 @media (width < 500px) {
   .bloque-skills_1 {
     gap: 16px;
-  flex-wrap: wrap;
-  display: grid;
-  justify-items: stretch;
-  grid-template-columns:1fr;
-}
+    flex-wrap: wrap;
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: 1fr;
+  }
 }
 
 .bloque-skills_2 {
   gap: 16px;
-flex-wrap: wrap;
-display: grid;
-justify-items: stretch;
-grid-template-columns:1fr 1fr;
+  flex-wrap: wrap;
+  display: grid;
+  justify-items: stretch;
+  grid-template-columns: 1fr 1fr;
 }
 
 .grupo-tag-lebel {
@@ -746,19 +766,18 @@ grid-template-columns:1fr 1fr;
 
 .tag {
   display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    background-color: #1b1b1b;
-    padding: 8px 16px 8px 16px;
-    border-radius: 16px;
-    color: #9c9c9c;
-    justify-content: flex-start;
-    align-content: stretch;
-    min-height: 32px;
-    align-items: center;
-    gap: 16px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: #1b1b1b;
+  padding: 8px 16px 8px 16px;
+  border-radius: 16px;
+  color: #9c9c9c;
+  justify-content: flex-start;
+  align-content: stretch;
+  min-height: 32px;
+  align-items: center;
+  gap: 16px;
 }
-
 
 /* ___________________________Footer_____________________________ */
 
