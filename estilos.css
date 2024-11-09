@@ -470,14 +470,14 @@ ul {
   max-width: 1442px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .nombre-seccion-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 650px) {
   .nombre-seccion-cards {
     display: grid;
     grid-template-columns: 1fr;
