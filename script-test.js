@@ -3,7 +3,7 @@ scene.background = new THREE.Color(0x121212);
 
 // Configura la niebla con color y distancias ajustadas
 const fogColor = new THREE.Color(0x121212); // Color de la niebla
-const fogNear = 10; // Distancia de inicio
+const fogNear = 15; // Distancia de inicio
 const fogFar = 35; // Distancia final
 
 scene.fog = new THREE.Fog(fogColor, fogNear, fogFar);
