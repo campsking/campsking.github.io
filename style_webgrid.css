@@ -1,0 +1,242 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #121212;
+  font-family: "Cairo", sans-serif;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(
+    32,
+    100px
+  ); /* Assign a height of 100px to each fr unit */
+  gap: 16px;
+  height: 100vh;
+  width: calc(
+    100vw - 16px
+  ); /* Adjust width to account for padding on one side */
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.parent > div {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden; /* Ensure the content does not overflow the div */
+}
+
+.parent > div.enlarged {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 10;
+  transition: all 0.5s ease-in-out; /* Smooth transition for enlarging */
+}
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.profile-name {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.div1 {
+  grid-column: span 3 / span 3;
+  grid-row: span 2 / span 2;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: 16px; */
+}
+
+.div2 {
+  grid-column: span 9 / span 9;
+  grid-row: span 2 / span 2;
+  grid-column-start: 4;
+}
+
+.div3 {
+  grid-column: span 3 / span 3;
+  grid-row: span 3 / span 3;
+  grid-row-start: 3;
+}
+
+.div4 {
+  grid-column: span 3 / span 3;
+  grid-row: span 3 / span 3;
+  grid-column-start: 4;
+  grid-row-start: 3;
+}
+
+.div5 {
+  grid-column: span 3 / span 3;
+  grid-row: span 3 / span 3;
+  grid-column-start: 7;
+  grid-row-start: 3;
+}
+
+.div6 {
+  grid-column: span 3 / span 3;
+  grid-row: span 3 / span 3;
+  grid-column-start: 10;
+  grid-row-start: 3;
+}
+
+.div7 {
+  grid-column: span 3 / span 3;
+  grid-row: span 6 / span 6;
+  grid-row-start: 6;
+}
+
+.div8 {
+  grid-column: span 6 / span 6;
+  grid-row: span 3 / span 3;
+  grid-column-start: 4;
+  grid-row-start: 6;
+}
+
+.div9 {
+  grid-column: span 3 / span 3;
+  grid-row: span 6 / span 6;
+  grid-column-start: 10;
+  grid-row-start: 6;
+}
+
+.div10 {
+  grid-column: span 6 / span 6;
+  grid-row: span 5 / span 5;
+  grid-column-start: 4;
+  grid-row-start: 9;
+}
+
+.div11 {
+  grid-column: span 3 / span 3;
+  grid-row: span 4 / span 4;
+  grid-row-start: 12;
+}
+
+.div12 {
+  grid-column: span 3 / span 3;
+  grid-row: span 4 / span 4;
+  grid-column-start: 10;
+  grid-row-start: 12;
+}
+
+.div13 {
+  grid-column: span 3 / span 3;
+  grid-row: span 2 / span 2;
+  grid-column-start: 4;
+  grid-row-start: 14;
+}
+
+.div14 {
+  grid-column: span 3 / span 3;
+  grid-row: span 2 / span 2;
+  grid-column-start: 7;
+  grid-row-start: 14;
+}
+
+.div15 {
+  grid-column: span 4 / span 4;
+  grid-row: span 9 / span 9;
+  grid-row-start: 16;
+}
+
+.div16 {
+  grid-column: span 4 / span 4;
+  grid-row: span 9 / span 9;
+  grid-column-start: 5;
+  grid-row-start: 16;
+}
+
+.div17 {
+  grid-column: span 4 / span 4;
+  grid-row: span 9 / span 9;
+  grid-column-start: 9;
+  grid-row-start: 16;
+}
+
+.div18 {
+  grid-column: span 6 / span 6;
+  grid-row: span 5 / span 5;
+  grid-row-start: 25;
+}
+
+.div19 {
+  grid-column: span 6 / span 6;
+  grid-row: span 5 / span 5;
+  grid-column-start: 7;
+  grid-row-start: 25;
+}
+
+.div20 {
+  grid-column: span 12 / span 12;
+  grid-row: span 3 / span 3;
+  grid-row-start: 30;
+}
+
+/* Styles for the btn-download button */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #ff7b00;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-download:hover {
+  background-color: #e66a00;
+  transform: scale(1.05);
+}
+
+.btn-download:active {
+  background-color: #cc5f00;
+  transform: scale(0.95);
+}
+
+.btn-download img {
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+}
